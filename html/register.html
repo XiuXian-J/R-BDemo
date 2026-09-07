@@ -1,0 +1,755 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>用户注册 - R&B音乐世界</title>
+    
+    <!-- Bootstrap 5 CSS -->
+    <link href="../css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- 本地字体图标库 -->
+    <link rel="stylesheet" href="../css/font.css">
+    
+    <!-- 自定义样式 -->
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/responsive.css">
+    
+    <!-- 网站图标 -->
+    <link rel="icon" href="../img/icons/favicon.ico" type="image/x-icon">
+    
+    <style>
+        .register-card {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .form-step {
+            display: none;
+        }
+        
+        .form-step.active {
+            display: block;
+        }
+        
+        .step-indicator {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 30px;
+            position: relative;
+        }
+        
+        .step-indicator::before {
+            content: '';
+            position: absolute;
+            top: 15px;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: #e9ecef;
+            z-index: 1;
+        }
+        
+        .step {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            width: 33.33%;
+        }
+        
+        .step-circle {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            background: #e9ecef;
+            color: #6c757d;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 10px;
+            font-weight: bold;
+        }
+        
+        .step.active .step-circle {
+            background: var(--primary-color);
+            color: white;
+        }
+        
+        .step.completed .step-circle {
+            background: #28a745;
+            color: white;
+        }
+        
+        .step-label {
+            font-size: 0.9rem;
+            color: #6c757d;
+        }
+        
+        .step.active .step-label {
+            color: var(--primary-color);
+            font-weight: 500;
+        }
+        
+        .password-strength {
+            height: 5px;
+            background: #e9ecef;
+            border-radius: 5px;
+            margin-top: 5px;
+            overflow: hidden;
+        }
+        
+        .password-strength-bar {
+            height: 100%;
+            width: 0;
+            transition: width 0.3s;
+        }
+        
+        .strength-weak { background: #dc3545; }
+        .strength-fair { background: #ffc107; }
+        .strength-good { background: #28a745; }
+        .strength-strong { background: #007bff; }
+    </style>
+</head>
+<body>
+    <!-- 导航栏开始 -->
+            <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+                <div class="container">
+                    <a class="navbar-brand" href="index.html">
+                        <span class="iconfont me-2">&#xe99a;</span>R&B音乐世界
+                    </a>
+                    
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    
+                    <div class="collapse navbar-collapse" id="navbarNav">
+                        <ul class="navbar-nav me-auto">
+                            <li class="nav-item">
+                                <a class="nav-link active" href="index.html">首页</a>
+                            </li>
+                            
+                            <!-- 歌手介绍下拉菜单 -->
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="singersDropdown" role="button" 
+                                   data-bs-toggle="dropdown" aria-expanded="false">
+                                    歌手介绍
+                                </a>
+                                <ul class="dropdown-menu" aria-labelledby="singersDropdown">
+                                    <li><a class="dropdown-item" href="wanglihong.html">王力宏</a></li>
+                                    <li><a class="dropdown-item" href="taozhe.html">陶喆</a></li>
+                                    <li><a class="dropdown-item" href="fangdatong.html">方大同</a></li>
+                                    <li><hr class="dropdown-divider"></li>
+                                    <li><a class="dropdown-item" href="compare.html">三人对比</a></li>
+                                </ul>
+                            </li>
+                            
+                            <!-- 专辑页面 -->
+                            <li class="nav-item">
+                                <a class="nav-link" href="classic_albums.html">经典专辑</a>
+                            </li>
+                            
+                            <li class="nav-item">
+                                <a class="nav-link" href="song_stories.html">创作故事</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="about.html">关于我们</a>
+                            </li>
+                        </ul>
+                        
+                        <!-- 用户操作区域 -->
+                        <div class="d-flex">
+                            <a href="login.html" class="btn btn-outline-light me-2">
+                                <span class="iconfont me-1">&#xe97e;</span>登录
+                            </a>
+                            <a href="register.html" class="btn btn-primary">
+                                <span class="iconfont me-1">&#xe683;</span>注册
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+            <!-- 导航栏结束 -->
+
+    <!-- 注册表单 -->
+    <main class="container py-5 mt-5">
+        <div class="register-card">
+            <div class="card shadow-lg">
+                <div class="card-header bg-primary text-white py-4">
+                    <h3 class="mb-0 text-center">
+                        <span class="iconfont me-2">&#xe683;</span>创建新账户
+                    </h3>
+                </div>
+                
+                <div class="card-body p-4 p-md-5">
+                    <!-- 步骤指示器 -->
+                    <div class="step-indicator">
+                        <div class="step active" id="step1-indicator">
+                            <div class="step-circle">1</div>
+                            <div class="step-label">基本信息</div>
+                        </div>
+                        <div class="step" id="step2-indicator">
+                            <div class="step-circle">2</div>
+                            <div class="step-label">账户设置</div>
+                        </div>
+                        <div class="step" id="step3-indicator">
+                            <div class="step-circle">3</div>
+                            <div class="step-label">完成注册</div>
+                        </div>
+                    </div>
+                    
+                    <!-- 步骤1：基本信息 -->
+                    <div id="step1" class="form-step active">
+                        <h5 class="mb-4">基本信息</h5>
+                        
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label for="firstName" class="form-label">姓氏</label>
+                                <input type="text" class="form-control" id="firstName" required>
+                                <div class="invalid-feedback">
+                                    请输入姓氏
+                                </div>
+                            </div>
+                            
+                            <div class="col-md-6 mb-3">
+                                <label for="lastName" class="form-label">名字</label>
+                                <input type="text" class="form-control" id="lastName" required>
+                                <div class="invalid-feedback">
+                                    请输入名字
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="mb-3">
+                            <label for="email" class="form-label">邮箱地址</label>
+                            <input type="email" class="form-control" id="email" required>
+                            <div class="invalid-feedback">
+                                请输入有效的邮箱地址
+                            </div>
+                            <div class="form-text">
+                                我们将使用此邮箱发送验证信息和重要通知
+                            </div>
+                        </div>
+                        
+                        <div class="mb-3">
+                            <label for="birthdate" class="form-label">出生日期</label>
+                            <input type="date" class="form-control" id="birthdate" required>
+                            <div class="invalid-feedback">
+                                请选择出生日期
+                            </div>
+                        </div>
+                        
+                        <div class="mb-3">
+                            <label class="form-label">性别</label>
+                            <div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="gender" id="male" value="male">
+                                    <label class="form-check-label" for="male">男</label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="gender" id="female" value="female">
+                                    <label class="form-check-label" for="female">女</label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="gender" id="other" value="other">
+                                    <label class="form-check-label" for="other">其他</label>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="d-flex justify-content-between mt-4">
+                            <button type="button" class="btn btn-secondary" disabled>上一步</button>
+                            <button type="button" class="btn btn-primary" id="nextStep1">下一步</button>
+                        </div>
+                    </div>
+                    
+                    <!-- 步骤2：账户设置 -->
+                    <div id="step2" class="form-step">
+                        <h5 class="mb-4">账户设置</h5>
+                        
+                        <div class="mb-3">
+                            <label for="username" class="form-label">用户名</label>
+                            <div class="input-group">
+                                <span class="input-group-text">@</span>
+                                <input type="text" class="form-control" id="username" required>
+                                <button class="btn btn-outline-secondary" type="button" id="checkUsername">
+                                    检查可用性
+                                </button>
+                            </div>
+                            <div class="invalid-feedback">
+                                请输入用户名
+                            </div>
+                            <div class="form-text" id="usernameFeedback">
+                                用户名长度为4-20个字符，可以包含字母、数字和下划线
+                            </div>
+                        </div>
+                        
+                        <div class="mb-3">
+                            <label for="password" class="form-label">密码</label>
+                            <div class="input-group">
+                                <input type="password" class="form-control" id="password" required>
+                                <button class="btn btn-outline-secondary" type="button" id="togglePassword">
+                                    <span class="iconfont">&#xe8bf;</span>
+                                </button>
+                            </div>
+                            <div class="password-strength">
+                                <div class="password-strength-bar" id="passwordStrength"></div>
+                            </div>
+                            <div class="form-text">
+                                密码必须包含至少8个字符，包括大写字母、小写字母和数字
+                            </div>
+                        </div>
+                        
+                        <div class="mb-3">
+                            <label for="confirmPassword" class="form-label">确认密码</label>
+                            <input type="password" class="form-control" id="confirmPassword" required>
+                            <div class="invalid-feedback" id="confirmPasswordFeedback">
+                                密码不匹配
+                            </div>
+                        </div>
+                        
+                        <div class="mb-3">
+                            <label for="securityQuestion" class="form-label">安全问题</label>
+                            <select class="form-select" id="securityQuestion" required>
+                                <option value="">请选择一个安全问题</option>
+                                <option value="1">您母亲的名字是什么？</option>
+                                <option value="2">您出生城市的名称是什么？</option>
+                                <option value="3">您的第一所学校的名称是什么？</option>
+                                <option value="4">您最喜欢的宠物名字是什么？</option>
+                            </select>
+                            <div class="invalid-feedback">
+                                请选择安全问题
+                            </div>
+                        </div>
+                        
+                        <div class="mb-4">
+                            <label for="securityAnswer" class="form-label">安全答案</label>
+                            <input type="text" class="form-control" id="securityAnswer" required>
+                            <div class="invalid-feedback">
+                                请输入安全答案
+                            </div>
+                        </div>
+                        
+                        <div class="d-flex justify-content-between mt-4">
+                            <button type="button" class="btn btn-secondary" id="prevStep2">上一步</button>
+                            <button type="button" class="btn btn-primary" id="nextStep2">下一步</button>
+                        </div>
+                    </div>
+                    
+                    <!-- 步骤3：完成注册 -->
+                    <div id="step3" class="form-step">
+                        <h5 class="mb-4">注册成功</h5>
+                        
+                        <div class="text-center mb-5">
+                            <div class="mb-4">
+                                <div style="font-size:5rem; color:#28a745; line-height:1;">✓</div>
+                            </div>
+                            <h4>恭喜！注册成功</h4>
+                            <p class="text-muted">
+                                您的账户已创建成功，现在可以享受R&B音乐世界的所有功能了。
+                            </p>
+                        </div>
+                        
+                        <div class="card mb-4">
+                            <div class="card-body">
+                                <h6>账户信息</h6>
+                                <table class="table table-borderless table-sm">
+                                    <tr>
+                                        <th width="30%">用户名:</th>
+                                        <td id="summaryUsername">-</td>
+                                    </tr>
+                                    <tr>
+                                        <th>邮箱:</th>
+                                        <td id="summaryEmail">-</td>
+                                    </tr>
+                                    <tr>
+                                        <th>注册时间:</th>
+                                        <td id="registrationTime">-</td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                        
+                        <div class="alert alert-info">
+                            <h6><span class="iconfont me-2">&#xe61b;</span>下一步建议</h6>
+                            <ul class="mb-0">
+                                <li>验证您的邮箱地址以激活账户</li>
+                                <li>完善个人资料信息</li>
+                                <li>探索我们的音乐库和功能</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="d-flex justify-content-between mt-4">
+                            <button type="button" class="btn btn-secondary" id="prevStep3">上一步</button>
+                            <a href="index.html" class="btn btn-success">开始探索</a>
+                        </div>
+                    </div>
+                    
+                    <!-- 条款同意 -->
+                    <div class="mt-4 pt-3 border-top">
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="agreeTerms" required>
+                            <label class="form-check-label" for="agreeTerms">
+                                我已阅读并同意 <a href="#" class="text-decoration-none">服务条款</a> 和 <a href="#" class="text-decoration-none">隐私政策</a>
+                            </label>
+                            <div class="invalid-feedback">
+                                必须同意条款才能注册
+                            </div>
+                        </div>
+                        
+                        <div class="text-center mt-4">
+                            <p class="mb-0">
+                                已有账户？ <a href="login.html" class="text-decoration-none fw-bold">立即登录</a>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- 页脚 -->
+    <footer class="bg-dark text-white py-4">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6">
+                        <p class="mb-0">&copy; 2025 R&B音乐世界. 版权所有.</p>
+                    </div>
+                    <div class="col-md-6 text-md-end">
+                        <a href="index.html" class="text-white-50 me-3">返回首页</a>
+                        <a href="#" class="text-white-50" id="back-to-top"><span class="iconfont">&#xe61b;</span> 回到顶部</a>
+                    </div>
+                </div>
+            </div>
+        </footer>
+
+	<!-- Bootstrap 5 JavaScript Bundle with Popper -->
+	    <script src="../js/bootstrap.bundle.min.js"></script>
+    
+    <!-- 注册页面脚本 -->
+    <script>
+        // 当前步骤
+        let currentStep = 1;
+        const totalSteps = 3;
+        
+        // 表单数据存储
+        const formData = {
+            step1: {},
+            step2: {}
+        };
+        
+		// 在 initRegistration 函数前添加
+		function clearInitialValidationStates() {
+		    // 清除所有输入框的验证样式
+		    const inputs = document.querySelectorAll('.form-control');
+		    inputs.forEach(input => {
+		        input.classList.remove('is-valid', 'is-invalid');
+		    });
+		    
+		    // 隐藏所有错误消息
+		    const feedbacks = document.querySelectorAll('.invalid-feedback');
+		    feedbacks.forEach(feedback => {
+		        feedback.style.display = 'none';
+		    });
+		    
+		    // 清除单选按钮的验证样式
+		    const radios = document.querySelectorAll('.form-check-input');
+		    radios.forEach(radio => {
+		        radio.classList.remove('is-invalid');
+		    });
+		    
+		    // 清除复选框的验证样式
+		    const checkbox = document.getElementById('agreeTerms');
+		    if (checkbox) {
+		        checkbox.classList.remove('is-invalid');
+		    }
+		}
+		
+		// 初始化函数
+		function initRegistration() {
+		    // 清除初始验证状态
+		    clearInitialValidationStates();
+		    
+		    // 步骤导航
+		    document.getElementById('nextStep1').addEventListener('click', () => validateStep1());
+		    document.getElementById('nextStep2').addEventListener('click', () => validateStep2());
+		    document.getElementById('prevStep2').addEventListener('click', () => goToStep(1));
+		    document.getElementById('prevStep3').addEventListener('click', () => goToStep(2));
+		    
+            // 密码显示/隐藏
+            document.getElementById('togglePassword').addEventListener('click', togglePasswordVisibility);
+            
+            // 用户名检查
+            document.getElementById('checkUsername').addEventListener('click', checkUsernameAvailability);
+            
+            // 密码强度检查
+            document.getElementById('password').addEventListener('input', checkPasswordStrength);
+            
+            // 确认密码检查
+            document.getElementById('confirmPassword').addEventListener('input', checkPasswordMatch);
+            
+            // 更新注册时间
+            document.getElementById('registrationTime').textContent = new Date().toLocaleString();
+        }
+        
+        // 验证步骤1
+        function validateStep1() {
+            const firstName = document.getElementById('firstName');
+            const lastName = document.getElementById('lastName');
+            const email = document.getElementById('email');
+            const birthdate = document.getElementById('birthdate');
+            const gender = document.querySelector('input[name="gender"]:checked');
+            
+            let isValid = true;
+            
+            // 验证姓氏
+            if (!firstName.value.trim()) {
+                firstName.classList.add('is-invalid');
+                isValid = false;
+            } else {
+                firstName.classList.remove('is-invalid');
+                formData.step1.firstName = firstName.value;
+            }
+            
+            // 验证名字
+            if (!lastName.value.trim()) {
+                lastName.classList.add('is-invalid');
+                isValid = false;
+            } else {
+                lastName.classList.remove('is-invalid');
+                formData.step1.lastName = lastName.value;
+            }
+            
+            // 验证邮箱
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!email.value.trim() || !emailRegex.test(email.value)) {
+                email.classList.add('is-invalid');
+                isValid = false;
+            } else {
+                email.classList.remove('is-invalid');
+                formData.step1.email = email.value;
+            }
+            
+            // 验证出生日期
+            if (!birthdate.value) {
+                birthdate.classList.add('is-invalid');
+                isValid = false;
+            } else {
+                birthdate.classList.remove('is-invalid');
+                formData.step1.birthdate = birthdate.value;
+            }
+            
+            // 验证性别
+            if (!gender) {
+                document.getElementById('male').classList.add('is-invalid');
+                isValid = false;
+            } else {
+                document.getElementById('male').classList.remove('is-invalid');
+                formData.step1.gender = gender.value;
+            }
+            
+            if (isValid) {
+                goToStep(2);
+            }
+        }
+        
+        // 验证步骤2
+        function validateStep2() {
+            const username = document.getElementById('username');
+            const password = document.getElementById('password');
+            const confirmPassword = document.getElementById('confirmPassword');
+            const securityQuestion = document.getElementById('securityQuestion');
+            const securityAnswer = document.getElementById('securityAnswer');
+            
+            let isValid = true;
+            
+            // 验证用户名
+            if (!username.value.trim() || username.value.length < 4) {
+                username.classList.add('is-invalid');
+                isValid = false;
+            } else {
+                username.classList.remove('is-invalid');
+                formData.step2.username = username.value;
+            }
+            
+            // 验证密码
+            const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{8,}$/;
+            if (!password.value.trim() || !passwordRegex.test(password.value)) {
+                password.classList.add('is-invalid');
+                isValid = false;
+            } else {
+                password.classList.remove('is-invalid');
+                formData.step2.password = password.value;
+            }
+            
+            // 验证确认密码
+            if (password.value !== confirmPassword.value) {
+                confirmPassword.classList.add('is-invalid');
+                document.getElementById('confirmPasswordFeedback').style.display = 'block';
+                isValid = false;
+            } else {
+                confirmPassword.classList.remove('is-invalid');
+                document.getElementById('confirmPasswordFeedback').style.display = 'none';
+            }
+            
+            // 验证安全问题
+            if (!securityQuestion.value) {
+                securityQuestion.classList.add('is-invalid');
+                isValid = false;
+            } else {
+                securityQuestion.classList.remove('is-invalid');
+                formData.step2.securityQuestion = securityQuestion.value;
+            }
+            
+            // 验证安全答案
+            if (!securityAnswer.value.trim()) {
+                securityAnswer.classList.add('is-invalid');
+                isValid = false;
+            } else {
+                securityAnswer.classList.remove('is-invalid');
+                formData.step2.securityAnswer = securityAnswer.value;
+            }
+            
+            // 验证条款同意
+            const agreeTerms = document.getElementById('agreeTerms');
+            if (!agreeTerms.checked) {
+                agreeTerms.classList.add('is-invalid');
+                isValid = false;
+            } else {
+                agreeTerms.classList.remove('is-invalid');
+            }
+            
+            if (isValid) {
+                // 更新摘要信息
+                document.getElementById('summaryUsername').textContent = formData.step2.username;
+                document.getElementById('summaryEmail').textContent = formData.step1.email;
+                
+                goToStep(3);
+            }
+        }
+        
+        // 跳转到指定步骤
+        function goToStep(step) {
+            // 隐藏当前步骤
+            document.getElementById(`step${currentStep}`).classList.remove('active');
+            document.getElementById(`step${currentStep}-indicator`).classList.remove('active');
+            
+            // 更新当前步骤
+            currentStep = step;
+            
+            // 显示新步骤
+            document.getElementById(`step${currentStep}`).classList.add('active');
+            document.getElementById(`step${currentStep}-indicator`).classList.add('active');
+            
+            // 更新步骤指示器状态
+            for (let i = 1; i <= totalSteps; i++) {
+                const indicator = document.getElementById(`step${i}-indicator`);
+                if (i < currentStep) {
+                    indicator.classList.add('completed');
+                } else {
+                    indicator.classList.remove('completed');
+                }
+            }
+        }
+        
+        // 切换密码可见性
+        function togglePasswordVisibility() {
+            const passwordInput = document.getElementById('password');
+            const icon = document.querySelector('#togglePassword .iconfont');
+            
+            if (passwordInput.type === 'password') {
+                passwordInput.type = 'text';
+                icon.textContent = '\ue61b'; // 使用信息图标代替眼睛关闭图标
+            } else {
+                passwordInput.type = 'password';
+                icon.textContent = '\ue8bf'; // 眼睛图标
+            }
+        }
+        
+        // 检查用户名可用性
+        function checkUsernameAvailability() {
+            const username = document.getElementById('username').value;
+            const feedback = document.getElementById('usernameFeedback');
+            
+            if (!username.trim()) {
+                feedback.innerHTML = '<span class="text-danger">请输入用户名</span>';
+                return;
+            }
+            
+            if (username.length < 4) {
+                feedback.innerHTML = '<span class="text-danger">用户名至少需要4个字符</span>';
+                return;
+            }
+            
+            // 模拟检查（实际应用中应该向服务器发送请求）
+            setTimeout(() => {
+                // 假设某些用户名已被占用
+                const takenUsernames = ['admin', 'user', 'test', 'music'];
+                
+                if (takenUsernames.includes(username.toLowerCase())) {
+                    feedback.innerHTML = `<span class="text-danger">用户名"${username}"已被占用</span>`;
+                } else {
+                    feedback.innerHTML = `<span class="text-success">用户名"${username}"可用</span>`;
+                }
+            }, 500);
+        }
+        
+        // 检查密码强度
+        function checkPasswordStrength() {
+            const password = document.getElementById('password').value;
+            const strengthBar = document.getElementById('passwordStrength');
+            
+            if (!password) {
+                strengthBar.style.width = '0%';
+                strengthBar.className = 'password-strength-bar';
+                return;
+            }
+            
+            // 计算密码强度
+            let strength = 0;
+            
+            // 长度检查
+            if (password.length >= 8) strength += 25;
+            if (password.length >= 12) strength += 10;
+            
+            // 字符种类检查
+            if (/[a-z]/.test(password)) strength += 20;
+            if (/[A-Z]/.test(password)) strength += 20;
+            if (/[0-9]/.test(password)) strength += 20;
+            if (/[^a-zA-Z0-9]/.test(password)) strength += 15;
+            
+            // 限制最大为100%
+            strength = Math.min(strength, 100);
+            
+            // 更新进度条
+            strengthBar.style.width = `${strength}%`;
+            
+            // 根据强度设置颜色
+            if (strength < 40) {
+                strengthBar.className = 'password-strength-bar strength-weak';
+            } else if (strength < 70) {
+                strengthBar.className = 'password-strength-bar strength-fair';
+            } else if (strength < 90) {
+                strengthBar.className = 'password-strength-bar strength-good';
+            } else {
+                strengthBar.className = 'password-strength-bar strength-strong';
+            }
+        }
+        
+        // 检查密码匹配
+        function checkPasswordMatch() {
+            const password = document.getElementById('password').value;
+            const confirmPassword = document.getElementById('confirmPassword').value;
+            const feedback = document.getElementById('confirmPasswordFeedback');
+            
+            if (confirmPassword && password !== confirmPassword) {
+                feedback.style.display = 'block';
+            } else {
+                feedback.style.display = 'none';
+            }
+        }
+        
+        // 页面加载完成后初始化
+        document.addEventListener('DOMContentLoaded', initRegistration);
+    </script>
+</body>
+</html>

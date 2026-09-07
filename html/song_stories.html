@@ -1,0 +1,1280 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>创作背景故事 - R&B音乐世界</title>
+
+		<!-- Bootstrap 5 CSS -->
+		<link href="../css/bootstrap.min.css" rel="stylesheet">
+
+		<!-- 本地字体图标库 -->
+		<link rel="stylesheet" href="../css/font.css">
+
+		<!-- 自定义样式 -->
+		<link rel="stylesheet" href="../css/style.css">
+		<link rel="stylesheet" href="../css/responsive.css">
+
+		<!-- 网站图标 -->
+		<link rel="icon" href="../img/icons/favicon.ico" type="image/x-icon">
+
+		<style>
+			.story-hero {
+				background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('images/stories/stories-banner.jpg');
+				background-size: cover;
+				background-position: center;
+				color: white;
+				padding: 100px 0;
+				text-align: center;
+				margin-bottom: 50px;
+			}
+
+			.story-card {
+				border-radius: var(--border-radius);
+				overflow: hidden;
+				box-shadow: var(--box-shadow);
+				transition: transform 0.3s ease;
+				height: 100%;
+				margin-bottom: 30px;
+			}
+
+			.story-card:hover {
+				transform: translateY(-10px);
+			}
+
+			.story-image {
+				height: 250px;
+				width: 100%;
+				object-fit: cover;
+			}
+
+			.story-content {
+				padding: 25px;
+			}
+
+			.story-title {
+				color: var(--secondary-color);
+				font-weight: 600;
+				margin-bottom: 10px;
+				font-size: 1.3rem;
+			}
+
+			.story-meta {
+				color: var(--text-light);
+				font-size: 0.9rem;
+				margin-bottom: 15px;
+			}
+
+			.story-excerpt {
+				color: #666;
+				line-height: 1.6;
+				margin-bottom: 15px;
+				font-size: 0.95rem;
+			}
+
+			.story-tags {
+				margin-top: 15px;
+			}
+
+			.story-tag {
+				display: inline-block;
+				background: #f1f1f1;
+				padding: 3px 10px;
+				border-radius: 20px;
+				font-size: 0.8rem;
+				margin-right: 5px;
+				margin-bottom: 5px;
+				color: #666;
+			}
+
+			.inspiration-quote {
+				border-left: 4px solid var(--primary-color);
+				padding-left: 15px;
+				margin: 20px 0;
+				font-style: italic;
+				color: var(--secondary-color);
+			}
+
+			.story-detail {
+				display: none;
+				padding: 25px;
+				background: #f9f9f9;
+				border-top: 1px solid #eee;
+			}
+
+			.story-detail.show {
+				display: block;
+			}
+
+			.song-player {
+				background: rgba(52, 152, 219, 0.1);
+				border-radius: 8px;
+				padding: 15px;
+				margin: 20px 0;
+			}
+
+			.story-nav {
+				position: sticky;
+				top: 100px;
+				background: white;
+				border-radius: var(--border-radius);
+				padding: 20px;
+				box-shadow: var(--box-shadow);
+			}
+
+			.story-nav-item {
+				padding: 10px 15px;
+				border-left: 3px solid transparent;
+				cursor: pointer;
+				transition: all 0.2s;
+				margin-bottom: 5px;
+			}
+
+			.story-nav-item:hover,
+			.story-nav-item.active {
+				background: rgba(52, 152, 219, 0.1);
+				border-left-color: var(--primary-color);
+			}
+
+			.timeline-dots {
+				list-style: none;
+				padding-left: 20px;
+			}
+
+			.timeline-dots li {
+				position: relative;
+				margin-bottom: 15px;
+			}
+
+			.timeline-dots li::before {
+				content: '';
+				position: absolute;
+				left: -20px;
+				top: 7px;
+				width: 8px;
+				height: 8px;
+				border-radius: 50%;
+				background: var(--primary-color);
+			}
+
+			@media (max-width: 768px) {
+				.story-hero {
+					padding: 70px 0;
+				}
+			}
+		</style>
+	</head>
+	<body>
+		<!-- 导航栏 -->
+		<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+			<div class="container">
+				<a class="navbar-brand" href="index.html">
+					<span class="iconfont me-2">&#xe99a;</span>R&B音乐世界
+				</a>
+
+				<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+					<span class="navbar-toggler-icon"></span>
+				</button>
+
+				<div class="collapse navbar-collapse" id="navbarNav">
+					<ul class="navbar-nav me-auto">
+						<li class="nav-item">
+							<a class="nav-link" href="index.html">首页</a>
+						</li>
+
+						<li class="nav-item dropdown">
+							<a class="nav-link dropdown-toggle" href="#" id="singersDropdown" role="button"
+								data-bs-toggle="dropdown" aria-expanded="false">
+								歌手介绍
+							</a>
+							<ul class="dropdown-menu" aria-labelledby="singersDropdown">
+								<li><a class="dropdown-item" href="wanglihong.html">王力宏</a></li>
+								<li><a class="dropdown-item" href="taozhe.html">陶喆</a></li>
+								<li><a class="dropdown-item" href="fangdatong.html">方大同</a></li>
+								<li>
+									<hr class="dropdown-divider">
+								</li>
+								<li><a class="dropdown-item" href="compare.html">三人对比</a></li>
+							</ul>
+						</li>
+
+						<li class="nav-item">
+							<a class="nav-link" href="classic_albums.html">经典专辑</a>
+						</li>
+
+						<li class="nav-item">
+							<a class="nav-link active" href="song_stories.html">创作故事</a>
+						</li>
+
+						<li class="nav-item">
+							<a class="nav-link" href="about.html">关于我们</a>
+						</li>
+					</ul>
+
+					<div class="d-flex">
+						<a href="login.html" class="btn btn-outline-light me-2">
+							<span class="iconfont me-1">&#xe97e;</span>登录
+						</a>
+						<a href="register.html" class="btn btn-primary">
+							<span class="iconfont me-1">&#xe683;</span>注册
+						</a>
+					</div>
+				</div>
+			</div>
+		</nav>
+
+		<!-- 页面头部 -->
+		<header class="story-hero">
+			<div class="container">
+				<h1 class="display-3 mb-3">歌曲创作背景故事</h1>
+				<p class="lead">探索经典歌曲背后的创作灵感、故事与心路历程</p>
+			</div>
+		</header>
+
+		<!-- 主要内容 -->
+		<main class="container py-4">
+			<div class="row">
+				<!-- 左侧：故事导航 -->
+				<div class="col-lg-3 mb-4">
+					<div class="story-nav">
+						<h5 class="mb-3">歌曲导航</h5>
+						<div class="story-nav-item active" data-story="story1">
+							<h6 class="mb-1">心中的日月</h6>
+							<p class="mb-0 text-muted small">王力宏</p>
+						</div>
+
+						<div class="story-nav-item" data-story="story2">
+							<h6 class="mb-1">爱很简单</h6>
+							<p class="mb-0 text-muted small">陶喆</p>
+						</div>
+
+						<div class="story-nav-item" data-story="story3">
+							<h6 class="mb-1">三人游</h6>
+							<p class="mb-0 text-muted small">方大同</p>
+						</div>
+
+						<div class="story-nav-item" data-story="story4">
+							<h6 class="mb-1">唯一</h6>
+							<p class="mb-0 text-muted small">王力宏</p>
+						</div>
+
+						<div class="story-nav-item" data-story="story5">
+							<h6 class="mb-1">黑色柳丁</h6>
+							<p class="mb-0 text-muted small">陶喆</p>
+						</div>
+
+						<div class="story-nav-item" data-story="story6">
+							<h6 class="mb-1">爱爱爱</h6>
+							<p class="mb-0 text-muted small">方大同</p>
+						</div>
+					</div>
+				</div>
+
+				<!-- 右侧：故事内容 -->
+				<div class="col-lg-9">
+					<!-- 故事1：心中的日月 -->
+					<div id="story1" class="story-detail show">
+						<div class="row mb-4">
+							<div class="col-md-8">
+								<h2 class="mb-2">《心中的日月》创作故事</h2>
+								<div class="story-meta">
+									<span class="iconfont me-1">&#xe61b;</span> 2004年 |
+									<span class="iconfont me-1 ms-2">&#xe704;</span> 王力宏 |
+									<span class="iconfont me-1 ms-2">&#xe99a;</span> 专辑《心中的日月》
+								</div>
+							</div>
+							<div class="col-md-4 text-md-end">
+								<button class="btn btn-primary play-story-song" data-song-index="6">
+									<span class="iconfont me-2">&#xe543;</span> 播放这首歌
+								</button>
+							</div>
+						</div>
+
+						<div class="row">
+							<div class="col-md-4 mb-4">
+								<img src="../img/stories/xinzhongderiyue.webp" alt="心中的日月" class="img-fluid rounded">
+							</div>
+							<div class="col-md-8">
+								<div class="song-player">
+									<h5><span class="iconfont me-2">&#xe99a;</span>歌曲信息</h5>
+									<table class="table table-sm">
+										<tr>
+											<th width="30%">作词</th>
+											<td>王力宏、陈镇川</td>
+										</tr>
+										<tr>
+											<th>作曲</th>
+											<td>王力宏</td>
+										</tr>
+										<tr>
+											<th>编曲</th>
+											<td>王力宏</td>
+										</tr>
+										<tr>
+											<th>发行时间</th>
+											<td>2004年12月31日</td>
+										</tr>
+										<tr>
+											<th>歌曲时长</th>
+											<td>4分36秒</td>
+										</tr>
+									</table>
+								</div>
+							</div>
+						</div>
+
+						<h4 class="mt-4 mb-3">创作背景</h4>
+						<p>《心中的日月》是王力宏在2004年发行的同名专辑的主打歌，也是他开创"Chinked-out"（华人嘻哈）风格的代表作之一。这首歌的创作灵感来源于王力宏的一次西藏之旅。</p>
+
+						<div class="inspiration-quote">
+							"在西藏旅行时，我被那里的纯净和神圣深深打动。那里的天空、雪山、经幡，还有藏族人民的虔诚信仰，都让我感受到一种超越物质的精神力量。我想把这种感受通过音乐表达出来。"
+							<div class="text-end mt-2">—— 王力宏</div>
+						</div>
+
+						<h4 class="mt-4 mb-3">创作过程</h4>
+						<p>王力宏在西藏采风期间，收集了大量藏族民间音乐素材，包括藏族民歌、宗教音乐和传统乐器演奏。回到录音室后，他开始尝试将西方R&B与藏族音乐元素融合：</p>
+
+						<ul class="timeline-dots">
+							<li><strong>旋律创作</strong>：主旋律灵感来源于藏族民歌的悠扬线条，但又加入了R&B的节奏感</li>
+							<li><strong>和声设计</strong>：使用了藏族音乐中常见的五声音阶，同时融入现代和声进行</li>
+							<li><strong>编曲创新</strong>：在传统流行乐编配基础上，加入了藏族乐器如扎木聂、铜钦等</li>
+							<li><strong>歌词创作</strong>：与陈镇川合作，歌词表达了对纯净、永恒之美的向往</li>
+						</ul>
+
+						<h4 class="mt-4 mb-3">音乐特色</h4>
+						<div class="row">
+							<div class="col-md-6">
+								<div class="card">
+									<div class="card-body">
+										<h6><span class="iconfont text-primary me-2">&#xe64f;</span>民族乐器运用</h6>
+										<p class="small mb-0">使用了扎木聂（藏族六弦琴）、铜钦（藏族长号）等传统乐器，与电子合成器音色形成对比。</p>
+									</div>
+								</div>
+							</div>
+							<div class="col-md-6">
+								<div class="card">
+									<div class="card-body">
+										<h6><span class="iconfont text-primary me-2">&#xe633;</span>节奏创新</h6>
+										<p class="small mb-0">将藏族舞蹈节奏与嘻哈节奏结合，创造出独特的"藏式嘻哈"节奏型。</p>
+									</div>
+								</div>
+							</div>
+						</div>
+
+						<h4 class="mt-4 mb-3">文化意义</h4>
+						<p>《心中的日月》不仅是王力宏音乐生涯的里程碑，也对华语流行音乐产生了深远影响：</p>
+
+						<ol>
+							<li><strong>开创了"Chinked-out"风格</strong>：将中国传统音乐元素与现代流行音乐形式有机结合</li>
+							<li><strong>推动了民族音乐现代化</strong>：为传统音乐在现代语境下的表达提供了新思路</li>
+							<li><strong>提升了华语音乐的国际影响力</strong>：让世界听到中国民族音乐与现代流行音乐融合的可能性</li>
+						</ol>
+
+						<div class="alert alert-info mt-4">
+							<h5><span class="iconfont me-2">&#xe61b;</span>你知道吗？</h5>
+							<p class="mb-0">《心中的日月》的音乐录影带是在西藏实景拍摄的，王力宏亲自参与了导演工作。拍摄期间遇到了高原反应等困难，但最终呈现出了震撼的视觉效果。</p>
+						</div>
+					</div>
+
+					<!-- 故事2：爱很简单 -->
+					<div id="story2" class="story-detail">
+						<div class="row mb-4">
+							<div class="col-md-8">
+								<h2 class="mb-2">《爱很简单》创作故事</h2>
+								<div class="story-meta">
+									<span class="iconfont me-1">&#xe61b;</span> 1997年 |
+									<span class="iconfont me-1 ms-2">&#xe704;</span> 陶喆 |
+									<span class="iconfont me-1 ms-2">&#xe99a;</span> 专辑《David Tao》
+								</div>
+							</div>
+							<div class="col-md-4 text-md-end">
+								<button class="btn btn-primary play-story-song" data-song-index="1">
+									<span class="iconfont me-2">&#xe543;</span> 播放这首歌
+								</button>
+							</div>
+						</div>
+
+						<div class="row">
+							<div class="col-md-4 mb-4">
+								<img src="../img/stories/aihenjiandan.webp" alt="爱很简单" class="img-fluid rounded">
+							</div>
+							<div class="col-md-8">
+								<div class="song-player">
+									<h5><span class="iconfont me-2">&#xe99a;</span>歌曲信息</h5>
+									<table class="table table-sm">
+										<tr>
+											<th width="30%">作词</th>
+											<td>娃娃</td>
+										</tr>
+										<tr>
+											<th>作曲</th>
+											<td>陶喆</td>
+										</tr>
+										<tr>
+											<th>编曲</th>
+											<td>陶喆</td>
+										</tr>
+										<tr>
+											<th>发行时间</th>
+											<td>1997年12月6日</td>
+										</tr>
+										<tr>
+											<th>歌曲时长</th>
+											<td>4分30秒</td>
+										</tr>
+										<tr>
+											<th>特殊荣誉</th>
+											<td>金曲奖最佳年度歌曲提名</td>
+										</tr>
+									</table>
+								</div>
+							</div>
+						</div>
+
+						<h4 class="mt-4 mb-3">创作背景</h4>
+						<p>《爱很简单》是陶喆首张个人专辑《David Tao》的主打歌之一，也是华语乐坛最具代表性的R&B情歌之一。这首歌创作于陶喆在美国洛杉矶生活期间，当时他正经历一段深刻的感情。</p>
+
+						<div class="inspiration-quote">
+							"当时我在美国，经历了一段既甜蜜又痛苦的恋情。我想写一首歌，表达爱情最纯粹、最简单的本质。爱情不需要太多复杂的理由，爱了就是爱了。"
+							<div class="text-end mt-2">—— 陶喆</div>
+						</div>
+
+						<h4 class="mt-4 mb-3">创作过程</h4>
+						<p>陶喆在创作这首歌时，刻意追求简洁和直接：</p>
+
+						<ul class="timeline-dots">
+							<li><strong>旋律创作</strong>：主旋律在15分钟内完成，灵感如泉涌般自然流露</li>
+							<li><strong>和声设计</strong>：使用经典的R&B和声进行，突出情感表达的纯粹性</li>
+							<li><strong>编曲特色</strong>：以钢琴为主导，配以简洁的鼓点和贝斯，突出人声表现力</li>
+							<li><strong>歌词创作</strong>：与资深作词人娃娃合作，歌词直白而深情</li>
+						</ul>
+
+						<h4 class="mt-4 mb-3">制作亮点</h4>
+						<div class="row">
+							<div class="col-md-6">
+								<div class="card">
+									<div class="card-body">
+										<h6><span class="iconfont text-primary me-2">&#xe61b;</span>人声处理</h6>
+										<p class="small mb-0">陶喆在录音时采用了"一镜到底"的方式，整首歌的演唱一气呵成，保留了情感的真实性。</p>
+									</div>
+								</div>
+							</div>
+							<div class="col-md-6">
+								<div class="card">
+									<div class="card-body">
+										<h6><span class="iconfont text-primary me-2">&#xe99a;</span>钢琴编配</h6>
+										<p class="small mb-0">开头的钢琴前奏成为经典，简单的和弦进行却营造出深情氛围，影响了后来无数情歌创作。</p>
+									</div>
+								</div>
+							</div>
+						</div>
+
+						<h4 class="mt-4 mb-3">历史地位</h4>
+						<p>《爱很简单》在华语流行音乐史上具有重要地位：</p>
+
+						<ol>
+							<li><strong>R&B在华语乐坛的奠基之作</strong>：首次将纯正美式R&B情歌成功引入华语市场</li>
+							<li><strong>影响了一代音乐人</strong>：成为许多后来R&B歌手学习的范本</li>
+							<li><strong>经久不衰的经典</strong>：发行20多年后，依然是婚礼、告白等场合的热门歌曲</li>
+							<li><strong>跨界影响力</strong>：被多位国际歌手翻唱，成为华语歌曲国际化的代表</li>
+						</ol>
+
+						<div class="alert alert-info mt-4">
+							<h5><span class="iconfont me-2">&#xe61b;</span>你知道吗？</h5>
+							<p class="mb-0">《爱很简单》最初是陶喆用英语创作的，原名为"I Love
+								You"。后来为了适应华语市场，才请娃娃填了中文词。陶喆后来也发行了英文版本，但中文版的影响力远大于英文版。</p>
+						</div>
+					</div>
+
+					<!-- 故事3：三人游 -->
+					<div id="story3" class="story-detail">
+						<div class="row mb-4">
+							<div class="col-md-8">
+								<h2 class="mb-2">《三人游》创作故事</h2>
+								<div class="story-meta">
+									<span class="iconfont me-1">&#xe61b;</span> 2008年 |
+									<span class="iconfont me-1 ms-2">&#xe704;</span> 方大同 |
+									<span class="iconfont me-1 ms-2">&#xe99a;</span> 专辑《橙月》
+								</div>
+							</div>
+							<div class="col-md-4 text-md-end">
+								<button class="btn btn-primary play-story-song" data-song-index="2">
+									<span class="iconfont me-2">&#xe543;</span> 播放这首歌
+								</button>
+							</div>
+						</div>
+
+						<div class="row">
+							<div class="col-md-4 mb-4">
+								<img src="../img/stories/sanrenyou.png" alt="三人游" class="img-fluid rounded">
+							</div>
+							<div class="col-md-8">
+								<div class="song-player">
+									<h5><span class="iconfont me-2">&#xe99a;</span>歌曲信息</h5>
+									<table class="table table-sm">
+										<tr>
+											<th width="30%">作词</th>
+											<td>崔惟楷</td>
+										</tr>
+										<tr>
+											<th>作曲</th>
+											<td>方大同</td>
+										</tr>
+										<tr>
+											<th>编曲</th>
+											<td>方大同</td>
+										</tr>
+										<tr>
+											<th>发行时间</th>
+											<td>2008年12月19日</td>
+										</tr>
+										<tr>
+											<th>歌曲时长</th>
+											<td>4分15秒</td>
+										</tr>
+										<tr>
+											<th>特殊荣誉</th>
+											<td>香港电台十大中文金曲奖</td>
+										</tr>
+									</table>
+								</div>
+							</div>
+						</div>
+
+						<h4 class="mt-4 mb-3">创作背景</h4>
+						<p>《三人游》是方大同第三张专辑《橙月》的主打歌，也是他最具代表性的作品之一。这首歌创作于方大同音乐风格的成熟期，展现了他对灵魂乐和R&B的深刻理解。</p>
+
+						<div class="inspiration-quote">
+							"我想写一首关于复杂情感的歌。有时候，爱情不仅仅是两个人的事，可能会涉及到第三个人，或者更多复杂的情感交织。这种微妙的关系很有意思。"
+							<div class="text-end mt-2">—— 方大同</div>
+						</div>
+
+						<h4 class="mt-4 mb-3">创作过程</h4>
+						<p>方大同在创作这首歌时，尝试将复杂的和声与简洁的旋律结合：</p>
+
+						<ul class="timeline-dots">
+							<li><strong>和弦进行</strong>：使用了爵士乐中常见的复杂和弦进行，但通过巧妙的连接使其听起来自然流畅</li>
+							<li><strong>旋律设计</strong>：主旋律简洁易记，但演唱时需要高度的控制力和情感表达</li>
+							<li><strong>节奏编排</strong>：采用缓慢的节奏，营造出沉思和忧郁的氛围</li>
+							<li><strong>歌词创作</strong>：与崔惟楷合作，歌词含蓄而深刻，表达了一种无奈而深情的爱</li>
+						</ul>
+
+						<h4 class="mt-4 mb-3">音乐特色</h4>
+						<div class="row">
+							<div class="col-md-6">
+								<div class="card">
+									<div class="card-body">
+										<h6><span class="iconfont text-primary me-2">&#xe633;</span>和声创新</h6>
+										<p class="small mb-0">使用了大量延伸和弦和替代和弦，展现了方大同深厚的爵士和声功底。</p>
+									</div>
+								</div>
+							</div>
+							<div class="col-md-6">
+								<div class="card">
+									<div class="card-body">
+										<h6><span class="iconfont text-primary me-2">&#xe64f;</span>吉他编排</h6>
+										<p class="small mb-0">方大同亲自演奏的吉他部分简洁而富有情感，与歌曲主题完美契合。</p>
+									</div>
+								</div>
+							</div>
+						</div>
+
+						<h4 class="mt-4 mb-3">情感表达</h4>
+						<p>《三人游》之所以能够打动无数听众，在于它深刻的情感表达：</p>
+
+						<ol>
+							<li><strong>复杂情感的细腻刻画</strong>：歌词描绘了爱而不得、默默守候的复杂心态</li>
+							<li><strong>克制的表达方式</strong>：没有激烈的情感宣泄，而是通过内敛的方式表达深情</li>
+							<li><strong>普遍的情感共鸣</strong>：触动了许多有过类似情感经历的人</li>
+							<li><strong>音乐与歌词的完美结合</strong>：忧郁的旋律与深刻的歌词相得益彰</li>
+						</ol>
+
+						<div class="alert alert-info mt-4">
+							<h5><span class="iconfont me-2">&#xe61b;</span>你知道吗？</h5>
+							<p class="mb-0">《三人游》的创作灵感部分来源于方大同看过的一部法国电影，电影中复杂的三角关系给了他创作灵感。他在采访中曾说，这首歌想表达的是"爱情中的无奈与坚持"。
+							</p>
+						</div>
+					</div>
+
+					<!-- 故事4：唯一 -->
+					<div id="story4" class="story-detail">
+						<div class="row mb-4">
+							<div class="col-md-8">
+								<h2 class="mb-2">《唯一》创作故事</h2>
+								<div class="story-meta">
+									<span class="iconfont me-1">&#xe61b;</span> 2001年 |
+									<span class="iconfont me-1 ms-2">&#xe704;</span> 王力宏 |
+									<span class="iconfont me-1 ms-2">&#xe99a;</span> 专辑《唯一》
+								</div>
+							</div>
+							<div class="col-md-4 text-md-end">
+								<button class="btn btn-primary play-story-song" data-song-index="0">
+									<span class="iconfont me-2">&#xe543;</span> 播放这首歌
+								</button>
+							</div>
+						</div>
+
+						<div class="row">
+							<div class="col-md-4 mb-4">
+								<img src="../img/stories/weiyi.png" alt="唯一" class="img-fluid rounded">
+							</div>
+							<div class="col-md-8">
+								<div class="song-player">
+									<h5><span class="iconfont me-2">&#xe99a;</span>歌曲信息</h5>
+									<table class="table table-sm">
+										<tr>
+											<th width="30%">作词</th>
+											<td>王力宏</td>
+										</tr>
+										<tr>
+											<th>作曲</th>
+											<td>王力宏</td>
+										</tr>
+										<tr>
+											<th>编曲</th>
+											<td>王力宏</td>
+										</tr>
+										<tr>
+											<th>发行时间</th>
+											<td>2001年9月27日</td>
+										</tr>
+										<tr>
+											<th>歌曲时长</th>
+											<td>4分28秒</td>
+										</tr>
+										<tr>
+											<th>奖项</th>
+											<td>全球华语榜中榜最受欢迎歌曲</td>
+										</tr>
+									</table>
+								</div>
+							</div>
+						</div>
+
+						<h4 class="mt-4 mb-3">创作背景</h4>
+						<p>《唯一》是王力宏音乐生涯中最重要的作品之一，创作于2001年。这首歌的诞生有一个传奇般的故事——它是在一架飞往洛杉矶的航班上创作完成的，从构思到完成仅用了不到一小时。</p>
+
+						<div class="inspiration-quote">
+							"当时我正在飞机上，看着窗外的云海，突然有一段旋律浮现在脑海中。我赶紧问空姐要了纸和笔，在飞机上完成了这首歌的主要部分。那种创作冲动就像闪电一样，来得突然却异常强烈。"
+							<div class="text-end mt-2">—— 王力宏</div>
+						</div>
+
+						<h4 class="mt-4 mb-3">创作过程</h4>
+						<p>这首传奇歌曲的创作过程充满了戏剧性：</p>
+
+						<ul class="timeline-dots">
+							<li><strong>灵感闪现</strong>：在飞往洛杉矶的航班上，看着窗外的景象突然获得灵感</li>
+							<li><strong>紧急创作</strong>：向空姐借来纸笔，在飞机上完成主旋律和和弦进行</li>
+							<li><strong>歌词创作</strong>：下飞机后在酒店房间里完成了歌词创作，歌词表达了对爱情的坚定信念</li>
+							<li><strong>录音过程</strong>：在洛杉矶的录音室录制，王力宏亲自演奏了所有乐器部分</li>
+						</ul>
+
+						<h4 class="mt-4 mb-3">音乐特色</h4>
+						<div class="row">
+							<div class="col-md-6">
+								<div class="card">
+									<div class="card-body">
+										<h6><span class="iconfont text-primary me-2">&#xe99a;</span>钢琴编曲</h6>
+										<p class="small mb-0">以钢琴为主要伴奏乐器，简单的和弦进行却营造出深情氛围，开头的钢琴前奏成为经典。</p>
+									</div>
+								</div>
+							</div>
+							<div class="col-md-6">
+								<div class="card">
+									<div class="card-body">
+										<h6><span class="iconfont text-primary me-2">&#xe61b;</span>人声处理</h6>
+										<p class="small mb-0">王力宏在这首歌中展现了出色的真假音转换技巧，特别是在副歌部分的情感爆发。</p>
+									</div>
+								</div>
+							</div>
+						</div>
+
+						<h4 class="mt-4 mb-3">文化影响</h4>
+						<p>《唯一》不仅是王力宏的代表作，也对华语流行音乐产生了深远影响：</p>
+
+						<ol>
+							<li><strong>树立了创作标杆</strong>：展示了音乐人如何在有限条件下创作出优秀作品</li>
+							<li><strong>影响了情歌创作</strong>：开创了"钢琴抒情摇滚"风格，影响了后来无数情歌创作</li>
+							<li><strong>跨界传播</strong>：被多个国际歌手翻唱，成为华语歌曲国际化的成功案例</li>
+							<li><strong>时代记忆</strong>：成为一代人的爱情记忆符号，常在婚礼、纪念日等场合播放</li>
+						</ol>
+
+						<div class="alert alert-info mt-4">
+							<h5><span class="iconfont me-2">&#xe61b;</span>趣闻轶事</h5>
+							<p class="mb-0">
+								《唯一》在录制时，王力宏坚持要一镜到底地演唱整首歌，以保持情感的连贯性。录音过程中多次因为情感过于投入而中断，最终版本是在第23次尝试中完成的。王力宏后来说："这首歌的情感太强烈了，每次唱到最后都控制不住自己的情绪。"
+							</p>
+						</div>
+					</div>
+
+					<!-- 故事5：黑色柳丁 -->
+					<div id="story5" class="story-detail">
+						<div class="row mb-4">
+							<div class="col-md-8">
+								<h2 class="mb-2">《黑色柳丁》创作故事</h2>
+								<div class="story-meta">
+									<span class="iconfont me-1">&#xe61b;</span> 2002年 |
+									<span class="iconfont me-1 ms-2">&#xe704;</span> 陶喆 |
+									<span class="iconfont me-1 ms-2">&#xe99a;</span> 专辑《黑色柳丁》
+								</div>
+							</div>
+							<div class="col-md-4 text-md-end">
+								<button class="btn btn-primary play-story-song" data-song-index="4">
+									<span class="iconfont me-2">&#xe543;</span> 播放这首歌
+								</button>
+							</div>
+						</div>
+
+						<div class="row">
+							<div class="col-md-4 mb-4">
+								<img src="../img/stories/heiseliuding.jpg" alt="黑色柳丁" class="img-fluid rounded">
+							</div>
+							<div class="col-md-8">
+								<div class="song-player">
+									<h5><span class="iconfont me-2">&#xe99a;</span>歌曲信息</h5>
+									<table class="table table-sm">
+										<tr>
+											<th width="30%">作词</th>
+											<td>陶喆、娃娃</td>
+										</tr>
+										<tr>
+											<th>作曲</th>
+											<td>陶喆</td>
+										</tr>
+										<tr>
+											<th>编曲</th>
+											<td>陶喆</td>
+										</tr>
+										<tr>
+											<th>发行时间</th>
+											<td>2002年8月9日</td>
+										</tr>
+										<tr>
+											<th>歌曲时长</th>
+											<td>4分15秒</td>
+										</tr>
+										<tr>
+											<th>风格</th>
+											<td>摇滚、另类、电子</td>
+										</tr>
+									</table>
+								</div>
+							</div>
+						</div>
+
+						<h4 class="mt-4 mb-3">创作背景</h4>
+						<p>《黑色柳丁》是陶喆在2002年发行的同名专辑的主打歌，也是他音乐生涯中最具争议性和实验性的作品之一。这首歌创作于9·11事件之后，反映了陶喆对世界局势和个人内心的深刻思考。</p>
+
+						<div class="inspiration-quote">
+							"9·11之后，世界变得很不一样。我感到一种前所未有的压抑和困惑。这首歌就是我内心黑暗面的表达，是我对这个混乱世界的回应。"
+							<div class="text-end mt-2">—— 陶喆</div>
+						</div>
+
+						<h4 class="mt-4 mb-3">创作过程</h4>
+						<p>这首充满实验性的作品创作过程复杂而痛苦：</p>
+
+						<ul class="timeline-dots">
+							<li><strong>音乐构思</strong>：陶喆想要创作一首打破常规的歌曲，融合摇滚、电子、工业等多种元素</li>
+							<li><strong>编曲实验</strong>：使用了大量非常规音色和效果，包括工业噪音、失真吉他、电子合成器等</li>
+							<li><strong>歌词创作</strong>：与娃娃合作，歌词充满隐喻和象征，表达了对社会现实的批判</li>
+							<li><strong>录音挑战</strong>：录制过程异常艰难，陶喆在录音室里度过了无数个不眠之夜</li>
+						</ul>
+
+						<h4 class="mt-4 mb-3">音乐创新</h4>
+						<div class="row">
+							<div class="col-md-6">
+								<div class="card">
+									<div class="card-body">
+										<h6><span class="iconfont text-primary me-2">&#xe633;</span>音色实验</h6>
+										<p class="small mb-0">大量使用工业噪音、失真效果和非常规打击乐音色，营造出压抑而紧张的氛围。</p>
+									</div>
+								</div>
+							</div>
+							<div class="col-md-6">
+								<div class="card">
+									<div class="card-body">
+										<h6><span class="iconfont text-primary me-2">&#xe64f;</span>吉他创新</h6>
+										<p class="small mb-0">使用大量反馈、啸叫等吉他效果，突破了传统吉他演奏的界限。</p>
+									</div>
+								</div>
+							</div>
+						</div>
+
+						<h4 class="mt-4 mb-3">主题深度</h4>
+						<p>《黑色柳丁》之所以成为经典，在于其深刻的主题内涵：</p>
+
+						<ol>
+							<li><strong>社会批判</strong>：反映了后9·11时代的社会焦虑和不确定性</li>
+							<li><strong>内心探索</strong>：深入探讨了人性中的黑暗面和光明面的斗争</li>
+							<li><strong>艺术突破</strong>：突破了华语流行音乐的常规，引入了前卫摇滚和工业音乐元素</li>
+							<li><strong>文化反思</strong>：对消费主义、媒体操控等现代文化现象进行了批判</li>
+						</ol>
+
+						<div class="alert alert-warning mt-4">
+							<h5><span class="iconfont me-2">&#xe61b;</span>争议与影响</h5>
+							<p class="mb-0">
+								《黑色柳丁》发行初期备受争议，许多听众和评论家认为它"太吵"、"太难听"。然而随着时间的推移，这首歌逐渐被认可为华语乐坛最具实验性和艺术性的作品之一，影响了后来许多另类摇滚和独立音乐人的创作。
+							</p>
+						</div>
+					</div>
+
+					<!-- 故事6：爱爱爱 -->
+					<div id="story6" class="story-detail">
+						<div class="row mb-4">
+							<div class="col-md-8">
+								<h2 class="mb-2">《爱爱爱》创作故事</h2>
+								<div class="story-meta">
+									<span class="iconfont me-1">&#xe61b;</span> 2006年 |
+									<span class="iconfont me-1 ms-2">&#xe704;</span> 方大同 |
+									<span class="iconfont me-1 ms-2">&#xe99a;</span> 专辑《爱爱爱》
+								</div>
+							</div>
+							<div class="col-md-4 text-md-end">
+								<button class="btn btn-primary play-story-song" data-song-index="5">
+									<span class="iconfont me-2">&#xe543;</span> 播放这首歌
+								</button>
+							</div>
+						</div>
+
+						<div class="row">
+							<div class="col-md-4 mb-4">
+								<img src="../img/stories/aiaiai.jpg" alt="爱爱爱" class="img-fluid rounded">
+							</div>
+							<div class="col-md-8">
+								<div class="song-player">
+									<h5><span class="iconfont me-2">&#xe99a;</span>歌曲信息</h5>
+									<table class="table table-sm">
+										<tr>
+											<th width="30%">作词</th>
+											<td>周耀辉</td>
+										</tr>
+										<tr>
+											<th>作曲</th>
+											<td>方大同</td>
+										</tr>
+										<tr>
+											<th>编曲</th>
+											<td>方大同</td>
+										</tr>
+										<tr>
+											<th>发行时间</th>
+											<td>2006年12月29日</td>
+										</tr>
+										<tr>
+											<th>歌曲时长</th>
+											<td>4分12秒</td>
+										</tr>
+										<tr>
+											<th>风格</th>
+											<td>灵魂乐、放克、R&B</td>
+										</tr>
+									</table>
+								</div>
+							</div>
+						</div>
+
+						<h4 class="mt-4 mb-3">创作背景</h4>
+						<p>《爱爱爱》是方大同第二张个人专辑的同名主打歌，也是他音乐风格的成熟标志。这首歌创作于方大同对音乐创作有了更深层次理解的时期，体现了他对爱情主题的哲学性思考。</p>
+
+						<div class="inspiration-quote">
+							"我想写一首关于爱情本质的歌。爱是什么？为什么我们都在寻找爱？这首歌就是我对于这些问题的一些思考。"
+							<div class="text-end mt-2">—— 方大同</div>
+						</div>
+
+						<h4 class="mt-4 mb-3">创作过程</h4>
+						<p>这首充满哲学意味的歌曲创作过程体现了方大同独特的创作理念：</p>
+
+						<ul class="timeline-dots">
+							<li><strong>概念先行</strong>：先确定了"探讨爱的本质"这一核心概念，再进行音乐创作</li>
+							<li><strong>音乐实验</strong>：尝试将灵魂乐的深情、放克的节奏感和R&B的流畅性融为一体</li>
+							<li><strong>歌词合作</strong>：与香港著名作词人周耀辉合作，歌词充满诗意和哲理</li>
+							<li><strong>乐器编排</strong>
+								<p class="small mb-0">方大同亲自演奏了歌曲中的所有乐器，展现了全面的音乐才能。</p>
+							</li>
+						</ul>
+
+
+						<h4 class="mt-4 mb-3">哲学思考</h4>
+						<p>《爱爱爱》不仅是一首情歌，更是一首充满哲学思考的作品：</p>
+
+						<ol>
+							<li><strong>爱的本质</strong>：探讨爱情的物质性与精神性、短暂与永恒</li>
+							<li><strong>现代爱情观</strong>：反映了当代社会中的爱情困惑和追求</li>
+							<li><strong>东西方融合</strong>：将西方灵魂乐的情感表达与东方哲学的含蓄内敛结合</li>
+							<li><strong>音乐与哲学</strong>：展示了音乐作为哲学思考载体的可能性</li>
+						</ol>
+
+						<h4 class="mt-4 mb-3">音乐创新</h4>
+						<p>这首歌在音乐上有多项创新：</p>
+
+						<div class="row">
+							<div class="col-md-4">
+								<div class="card">
+									<div class="card-body">
+										<h6>节奏创新</h6>
+										<p class="small mb-0">使用了复杂的复合节奏，将放克的节奏感与灵魂乐的即兴感结合</p>
+									</div>
+								</div>
+							</div>
+							<div class="col-md-4">
+								<div class="card">
+									<div class="card-body">
+										<h6>和声进行</h6>
+										<p class="small mb-0">使用了爵士和声中常见的替代和弦和延伸和弦，丰富了和声色彩</p>
+									</div>
+								</div>
+							</div>
+							<div class="col-md-4">
+								<div class="card">
+									<div class="card-body">
+										<h6>音色选择</h6>
+										<p class="small mb-0">使用了复古的模拟合成器音色，营造出温暖而怀旧的氛围</p>
+									</div>
+								</div>
+							</div>
+						</div>
+
+						<div class="alert alert-success mt-4">
+							<h5><span class="iconfont me-2">&#xe510;</span>艺术成就</h5>
+							<p class="mb-0">
+								《爱爱爱》获得了2007年香港电台十大中文金曲奖，被誉为"华语灵魂乐的里程碑之作"。这首歌的成功证明了方大同不仅是一位优秀的歌手，更是一位有着深刻思考的音乐哲学家。</p>
+						</div>
+					</div>
+
+					<!-- 故事卡片区域（其他歌曲的简要介绍） -->
+					<div class="row mt-5" id="story-cards">
+						<div class="col-12 mb-4">
+							<h3>更多创作故事</h3>
+						</div>
+
+						<!-- 故事卡片：唯一 -->
+						<div class="col-md-6 col-lg-4 mb-4 story-card" data-singer="wanglihong">
+							<div class="card h-100">
+								<img src="../img/stories/weiyi.png" class="card-img-top story-image" alt="唯一">
+								<div class="story-content">
+									<h5 class="story-title">《唯一》</h5>
+									<div class="story-meta">
+										<span class="iconfont me-1">&#xe61b;</span> 2001年 |
+										<span class="iconfont me-1 ms-2">&#xe704;</span> 王力宏
+									</div>
+									<p class="story-excerpt">王力宏在飞机上创作的经典情歌，记录了他对爱情的理解和感悟。创作过程仅用了一小时，却成为华语乐坛不朽的经典。</p>
+									<button class="btn btn-sm btn-outline-primary read-more" data-story="story4">
+										阅读完整故事
+									</button>
+									<div class="story-tags">
+										<span class="story-tag">情歌</span>
+										<span class="story-tag">创作灵感</span>
+										<span class="story-tag">经典</span>
+									</div>
+								</div>
+							</div>
+						</div>
+
+						<!-- 故事卡片：黑色柳丁 -->
+						<div class="col-md-6 col-lg-4 mb-4 story-card" data-singer="taozhe">
+							<div class="card h-100">
+								<img src="../img/stories/heiseliuding.jpg" class="card-img-top story-image"
+									alt="黑色柳丁">
+								<div class="story-content">
+									<h5 class="story-title">《黑色柳丁》</h5>
+									<div class="story-meta">
+										<span class="iconfont me-1">&#xe61b;</span> 2002年 |
+										<span class="iconfont me-1 ms-2">&#xe704;</span> 陶喆
+									</div>
+									<p class="story-excerpt">陶喆对社会现实的深刻反思之作，创作于9·11事件之后。歌曲融合了摇滚、电子和R&B元素，展现了陶喆多元化的音乐风格。
+									</p>
+									<button class="btn btn-sm btn-outline-primary read-more" data-story="story5">
+										阅读完整故事
+									</button>
+									<div class="story-tags">
+										<span class="story-tag">社会批判</span>
+										<span class="story-tag">摇滚</span>
+										<span class="story-tag">多元化</span>
+									</div>
+								</div>
+							</div>
+						</div>
+
+						<!-- 故事卡片：爱爱爱 -->
+						<div class="col-md-6 col-lg-4 mb-4 story-card" data-singer="fangdatong">
+							<div class="card h-100">
+								<img src="../img/stories/aiaiai.jpg" class="card-img-top story-image" alt="爱爱爱">
+								<div class="story-content">
+									<h5 class="story-title">《爱爱爱》</h5>
+									<div class="story-meta">
+										<span class="iconfont me-1">&#xe61b;</span> 2006年 |
+										<span class="iconfont me-1 ms-2">&#xe704;</span> 方大同
+									</div>
+									<p class="story-excerpt">方大同对爱情主题的哲学思考，探讨了爱情的不同面向和本质。歌曲融合了灵魂乐、放克和爵士元素，展现了方大同独特的音乐理念。
+									</p>
+									<button class="btn btn-sm btn-outline-primary read-more" data-story="story6">
+										阅读完整故事
+									</button>
+									<div class="story-tags">
+										<span class="story-tag">哲学思考</span>
+										<span class="story-tag">灵魂乐</span>
+										<span class="story-tag">放克</span>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</main>
+
+		<!-- 页脚 -->
+		<footer class="bg-dark text-white py-5 mt-5">
+		        <div class="container">
+		            <div class="row justify-content-center">
+		                <div class="col-md-8 text-center mb-4">
+		                    <h4 class="mb-3"><span class="iconfont me-2">&#xe99a;</span>R&B音乐世界</h4>
+		                    <p>专注于华语R&B音乐的文化传播平台，分享王力宏、陶喆、方大同三位音乐人的作品与故事。</p>
+		                </div>
+		            </div>
+		            
+		            <hr class="bg-light">
+		            
+		            <div class="row">
+		                <div class="col-12 text-center">
+		                    <p class="mb-0">&copy; 2025 R&B音乐世界. 版权所有.</p>
+		                </div>
+		            </div>
+		        </div>
+		    </footer>
+
+		<!-- 音乐播放器容器 -->
+		<div id="music-player-container">
+			<!-- 迷你播放器 -->
+			<div id="mini-player" class="mini-player">
+				<div class="mini-player-content">
+					<div class="now-playing">
+						<span class="iconfont">&#xe99a;</span>
+						<span id="mini-song-title">点击播放音乐</span>
+					</div>
+					<button id="toggle-player-btn" class="btn btn-sm btn-outline-light">
+						<span class="iconfont">&#xe61b;</span>
+					</button>
+				</div>
+			</div>
+
+			<!-- 完整播放器 -->
+			<div id="full-player" class="full-player">
+				<div class="player-header">
+					<h5><span class="iconfont me-2">&#xe99a;</span>音乐播放器</h5>
+					<button id="close-player-btn" class="btn btn-sm btn-outline-light">
+						<span class="iconfont">&#xe61b;</span>
+					</button>
+				</div>
+
+				<div class="player-body">
+					<!-- 歌曲信息 -->
+					<div class="song-info">
+						<div class="album-art">
+							<img id="current-album-art" src="images/albums/default-album.jpg" alt="专辑封面">
+						</div>
+						<div class="song-details">
+							<h4 id="current-song-title">暂无播放</h4>
+							<p id="current-singer">请选择歌曲</p>
+							<div class="song-progress">
+								<span id="current-time">0:00</span>
+								<input type="range" id="progress-bar" min="0" max="100" value="0">
+								<span id="duration">0:00</span>
+							</div>
+						</div>
+					</div>
+
+					<!-- 播放控制 -->
+					<div class="player-controls">
+						<button id="prev-btn" class="control-btn">
+							上一首
+						</button>
+						<button id="play-pause-btn" class="control-btn play-pause-btn">
+							<span class="iconfont">&#xe543;</span>
+						</button>
+						<button id="next-btn" class="control-btn">
+							下一首
+						</button>
+
+						<div class="volume-control">
+							<button id="mute-btn" class="volume-btn">
+								音量
+							</button>
+							<input type="range" id="volume-bar" min="0" max="100" value="80">
+						</div>
+
+						<button id="playlist-toggle-btn" class="control-btn">
+							列表
+						</button>
+					</div>
+
+					<!-- 播放列表 -->
+					<div id="playlist-container" class="playlist-container">
+						<div class="playlist-header">
+							<h6>播放列表</h6>
+							<span id="playlist-count">0 首歌曲</span>
+						</div>
+						<div class="playlist-content">
+							<ul id="playlist">
+								<!-- 播放列表将通过JavaScript动态添加 -->
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- 音频元素 -->
+		<audio id="audio-player" preload="metadata"></audio>
+
+		<!-- Bootstrap 5 JavaScript Bundle with Popper -->
+		    <script src="../js/bootstrap.bundle.min.js"></script>
+
+		<!-- 音乐播放器脚本 -->
+		<script src="../js/music_player.js"></script>
+
+		<!-- 创作故事页面脚本 -->
+		<script>
+			// 故事导航功能
+			document.querySelectorAll('.story-nav-item').forEach(item => {
+				item.addEventListener('click', function() {
+					const storyId = this.getAttribute('data-story');
+
+					// 更新导航项状态
+					document.querySelectorAll('.story-nav-item').forEach(navItem => {
+						navItem.classList.remove('active');
+					});
+					this.classList.add('active');
+
+					// 显示对应的故事内容
+					document.querySelectorAll('.story-detail').forEach(detail => {
+						detail.classList.remove('show');
+					});
+					document.getElementById(storyId).classList.add('show');
+
+					// 滚动到顶部
+					window.scrollTo({
+						top: document.querySelector('.story-hero').offsetHeight + 70,
+						behavior: 'smooth'
+					});
+				});
+			});
+
+			// 阅读更多按钮
+			document.querySelectorAll('.read-more').forEach(button => {
+				button.addEventListener('click', function() {
+					const storyId = this.getAttribute('data-story');
+
+					// 更新导航项状态
+					document.querySelectorAll('.story-nav-item').forEach(navItem => {
+						navItem.classList.remove('active');
+						if (navItem.getAttribute('data-story') === storyId) {
+							navItem.classList.add('active');
+						}
+					});
+
+					// 显示对应的故事内容
+					document.querySelectorAll('.story-detail').forEach(detail => {
+						detail.classList.remove('show');
+					});
+					document.getElementById(storyId).classList.add('show');
+
+					// 滚动到故事顶部
+					window.scrollTo({
+						top: document.querySelector('.story-hero').offsetHeight + 70,
+						behavior: 'smooth'
+					});
+				});
+			});
+
+			// 播放故事歌曲按钮
+			document.querySelectorAll('.play-story-song').forEach(button => {
+				button.addEventListener('click', function() {
+					const songIndex = parseInt(this.getAttribute('data-song-index'));
+
+					if (window.MusicPlayer) {
+						window.MusicPlayer.playSong(songIndex);
+
+						// 展开播放器
+						const fullPlayer = document.getElementById('full-player');
+						if (!fullPlayer.classList.contains('show')) {
+							const toggleBtn = document.getElementById('toggle-player-btn');
+							if (toggleBtn) toggleBtn.click();
+						}
+					}
+				});
+			});
+
+			// 初始化页面
+			document.addEventListener('DOMContentLoaded', function() {
+				// 设置第一个故事为默认显示
+				const firstStory = document.querySelector('.story-nav-item');
+				if (firstStory) {
+					firstStory.classList.add('active');
+				}
+
+				// 为故事详情页面添加滚动监听
+				window.addEventListener('scroll', function() {
+					const storyDetails = document.querySelectorAll('.story-detail');
+					const navHeight = document.querySelector('.navbar').offsetHeight;
+					const heroHeight = document.querySelector('.story-hero').offsetHeight;
+					const scrollPosition = window.scrollY;
+
+					// 找到当前显示的故事
+					let currentStoryId = null;
+					storyDetails.forEach(detail => {
+						const detailTop = detail.offsetTop - navHeight - 20;
+						const detailBottom = detailTop + detail.offsetHeight;
+
+						if (scrollPosition >= detailTop && scrollPosition < detailBottom) {
+							currentStoryId = detail.id;
+						}
+					});
+
+					// 更新导航项状态
+					if (currentStoryId) {
+						document.querySelectorAll('.story-nav-item').forEach(navItem => {
+							navItem.classList.remove('active');
+							if (navItem.getAttribute('data-story') === currentStoryId) {
+								navItem.classList.add('active');
+							}
+						});
+					}
+				});
+
+				// 添加键盘导航支持
+				document.addEventListener('keydown', function(e) {
+					const activeNavItem = document.querySelector('.story-nav-item.active');
+					if (!activeNavItem) return;
+
+					let nextStoryId = null;
+
+					if (e.key === 'ArrowDown' || e.key === 'ArrowRight') {
+						// 下一个故事
+						const nextItem = activeNavItem.nextElementSibling;
+						if (nextItem && nextItem.classList.contains('story-nav-item')) {
+							nextStoryId = nextItem.getAttribute('data-story');
+						}
+					} else if (e.key === 'ArrowUp' || e.key === 'ArrowLeft') {
+						// 上一个故事
+						const prevItem = activeNavItem.previousElementSibling;
+						if (prevItem && prevItem.classList.contains('story-nav-item')) {
+							nextStoryId = prevItem.getAttribute('data-story');
+						}
+					}
+
+					if (nextStoryId) {
+						// 触发点击事件
+						const nextNavItem = document.querySelector(
+							`.story-nav-item[data-story="${nextStoryId}"]`);
+						if (nextNavItem) {
+							nextNavItem.click();
+						}
+					}
+				});
+
+				console.log('创作故事页面已加载完成');
+			});
+		</script>
+	</body>
+</html>

@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>关于我们 - R&B音乐世界</title>
+    
+    <!-- Bootstrap 5 CSS -->
+    <link href="../css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- 本地字体图标库 -->
+    <link rel="stylesheet" href="../css/font.css">
+    
+    <!-- 自定义样式 -->
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/responsive.css">
+    
+    <!-- 网站图标 -->
+    <link rel="icon" href="../img/icons/favicon.ico" type="image/x-icon">
+    
+    <style>
+        .mission-card {
+            border-radius: var(--border-radius);
+            padding: 30px;
+            text-align: center;
+            height: 100%;
+            box-shadow: var(--box-shadow);
+            background: white;
+        }
+        
+        .team-member {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        
+        .team-member img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 15px;
+            border: 5px solid white;
+            box-shadow: var(--box-shadow);
+        }
+        
+        .timeline-about {
+            position: relative;
+            padding-left: 30px;
+        }
+        
+        .timeline-about::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 4px;
+            background: var(--primary-color);
+        }
+        
+        .timeline-item-about {
+            position: relative;
+            margin-bottom: 30px;
+        }
+        
+        .timeline-item-about::before {
+            content: '';
+            position: absolute;
+            left: -34px;
+            top: 5px;
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            background: var(--primary-color);
+            border: 3px solid white;
+            box-shadow: 0 0 0 3px var(--primary-color);
+        }
+    </style>
+</head>
+<body>
+    <!-- 导航栏 -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">
+                <span class="iconfont me-2">&#xe99a;</span>R&B音乐世界
+            </a>
+            
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">首页</a>
+                    </li>
+                    
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="singersDropdown" role="button" 
+                           data-bs-toggle="dropdown" aria-expanded="false">
+                            歌手介绍
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="singersDropdown">
+                            <li><a class="dropdown-item" href="wanglihong.html">王力宏</a></li>
+                            <li><a class="dropdown-item" href="taozhe.html">陶喆</a></li>
+                            <li><a class="dropdown-item" href="fangdatong.html">方大同</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="compare.html">三人对比</a></li>
+                        </ul>
+                    </li>
+                    
+                    <li class="nav-item">
+                        <a class="nav-link" href="classic_albums.html">经典专辑</a>
+                    </li>
+                    
+                    <li class="nav-item">
+                        <a class="nav-link" href="song_stories.html">创作故事</a>
+                    </li>
+                    
+                    <li class="nav-item">
+                        <a class="nav-link active" href="about.html">关于我们</a></li>
+                </ul>
+                
+                <div class="d-flex">
+                    <a href="login.html" class="btn btn-outline-light me-2">
+                        <span class="iconfont me-1">&#xe97e;</span>登录
+                    </a>
+                    <a href="register.html" class="btn btn-primary">
+                        <span class="iconfont me-1">&#xe683;</span>注册
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 页面头部 -->
+    <header class="bg-dark text-white py-5 mt-5">
+        <div class="container">
+            <h1 class="display-4">关于R&B音乐世界</h1>
+            <p class="lead">专注华语R&B音乐的文化传播平台</p>
+        </div>
+    </header>
+
+    <!-- 主要内容 -->
+    <main class="container py-5">
+        <!-- 网站介绍 -->
+        <div class="row mb-5">
+            <div class="col-lg-6 mb-4">
+                <h2 class="mb-4">我们的故事</h2>
+                <p class="lead">
+                    R&B音乐世界诞生于2023年，是一个专注于华语R&B音乐的文化传播平台。我们致力于分享王力宏、陶喆、方大同三位华语R&B领军人物的音乐作品与故事。
+                </p>
+                <p>
+                    在过去的几十年里，华语R&B音乐经历了从引入、发展到成熟的过程。王力宏、陶喆、方大同三位音乐人以其独特的音乐风格和创作理念，共同推动了中国R&B音乐的发展。我们希望通过这个平台，让更多人了解和欣赏华语R&B音乐的独特魅力。
+                </p>
+            </div>
+            
+            <div class="col-lg-6 mb-4">
+                <img src="../img/about/team.webp" alt="团队" class="img-fluid rounded">
+            </div>
+        </div>
+        
+        <!-- 使命与愿景 -->
+        <div class="row mb-5">
+            <div class="col-12 mb-4">
+                <h2 class="text-center mb-5">我们的使命与愿景</h2>
+            </div>
+            
+            <div class="col-md-4 mb-4">
+                <div class="mission-card">
+                    <div class="mb-4">
+                        <span class="iconfont fa-3x text-primary">&#xe655;</span>
+                    </div>
+                    <h4>使命</h4>
+                    <p>传播华语R&B音乐文化，连接音乐人与乐迷，促进音乐交流与创作。</p>
+                </div>
+            </div>
+            
+            <div class="col-md-4 mb-4">
+                <div class="mission-card">
+                    <div class="mb-4">
+                        <span class="iconfont fa-3x text-success">&#xe8bf;</span>
+                    </div>
+                    <h4>愿景</h4>
+                    <p>成为最具影响力的华语R&B音乐平台，推动中国R&B音乐走向世界。</p>
+                </div>
+            </div>
+            
+            <div class="col-md-4 mb-4">
+                <div class="mission-card">
+                    <div class="mb-4">
+                        <span class="iconfont fa-3x text-warning">&#xe62d;</span>
+                    </div>
+                    <h4>价值观</h4>
+                    <p>专业、创新、分享、连接，以音乐为桥梁，传递正能量。</p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 发展历程 -->
+        <div class="row mb-5">
+            <div class="col-12 mb-4">
+                <h2 class="text-center mb-5">发展历程</h2>
+            </div>
+            
+            <div class="col-lg-8 mx-auto">
+                <div class="timeline-about">
+                    <div class="timeline-item-about">
+                        <h5>2023年1月</h5>
+                        <p>R&B音乐世界项目启动，团队组建完成</p>
+                    </div>
+                    
+                    <div class="timeline-item-about">
+                        <h5>2023年3月</h5>
+                        <p>网站初步设计完成，开始内容策划</p>
+                    </div>
+                    
+                    <div class="timeline-item-about">
+                        <h5>2023年6月</h5>
+                        <p>网站开发完成，进入测试阶段</p>
+                    </div>
+                    
+                    <div class="timeline-item-about">
+                        <h5>2023年9月</h5>
+                        <p>网站正式上线，推出首版内容</p>
+                    </div>
+                    
+                    <div class="timeline-item-about">
+                        <h5>2023年11月</h5>
+                        <p>用户突破1万人，开始筹备移动端应用</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 团队介绍 -->
+        <div class="row mb-5">
+            <div class="col-12 mb-4">
+                <h2 class="text-center mb-5">我们的团队</h2>
+            </div>
+            
+            <div class="col-md-4">
+                <div class="team-member">
+                    <img src="../img/about/team1.webp" alt="团队负责人">
+                    <h5>张明</h5>
+                    <p class="text-muted">创始人 & 音乐总监</p>
+                    <p>资深音乐制作人，华语R&B音乐研究者，拥有15年音乐行业经验。</p>
+                </div>
+            </div>
+            
+            <div class="col-md-4">
+                <div class="team-member">
+                    <img src="../img/about/team2.webp" alt="技术总监">
+                    <h5>李华</h5>
+                    <p class="text-muted">技术总监</p>
+                    <p>前端开发专家，负责网站架构和技术实现，精通多种Web技术。</p>
+                </div>
+            </div>
+            
+            <div class="col-md-4">
+                <div class="team-member">
+                    <img src="../img/about/team3.webp" alt="内容编辑">
+                    <h5>王芳</h5>
+                    <p class="text-muted">内容主编</p>
+                    <p>音乐学硕士，负责内容策划和编辑，擅长音乐分析和评论。</p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 联系方式 -->
+        <div class="card">
+            <div class="card-header bg-primary text-white">
+                <h4 class="mb-0"><span class="iconfont me-2">&#xe61b;</span>联系我们</h4>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-6">
+                        <h5>联系信息</h5>
+                        <ul class="list-unstyled">
+                            <li class="mb-3">
+                                <span class="iconfont me-2 text-primary">&#xe61b;</span>
+                                <strong>邮箱:</strong> contact@rnbmusic.com
+                            </li>
+                            <li class="mb-3">
+                                <span class="iconfont me-2 text-primary">&#xe61b;</span>
+                                <strong>电话:</strong> 400-123-4567
+                            </li>
+                            <li class="mb-3">
+                                <span class="iconfont me-2 text-primary">&#xe606;</span>
+                                <strong>地址:</strong> 南京市栖霞区神农路1号
+                            </li>
+                            <li>
+                                <span class="iconfont me-2 text-primary">&#xe61b;</span>
+                                <strong>工作时间:</strong> 周一至周五 9:00-18:00
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- 页脚 -->
+    <footer class="bg-dark text-white py-5 mt-5">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-md-8 text-center mb-4">
+                    <h4 class="mb-3"><span class="iconfont me-2">&#xe99a;</span>R&B音乐世界</h4>
+                    <p>专注于华语R&B音乐的文化传播平台，分享王力宏、陶喆、方大同三位音乐人的作品与故事。</p>
+                </div>
+            </div>
+            
+            <hr class="bg-light">
+            
+            <div class="row">
+                <div class="col-12 text-center">
+                    <p class="mb-0">&copy; 2025 R&B音乐世界. 版权所有.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+	<script src="../js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

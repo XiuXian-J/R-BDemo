@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>陶喆 - R&B音乐世界</title>
+
+		<!-- Bootstrap 5 CSS -->
+		<link href="../css/bootstrap.min.css" rel="stylesheet">
+
+		<!-- 本地字体图标库 -->
+		<link rel="stylesheet" href="../css/font.css">
+
+		<!-- 自定义样式 -->
+		<link rel="stylesheet" href="../css/style.css">
+		<link rel="stylesheet" href="../css/responsive.css">
+
+		<!-- 网站图标 -->
+		<link rel="icon" href="../img/icons/favicon.ico" type="image/x-icon">
+
+		<style>
+			.singer-hero {
+				background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('../img/stories/tz.jpg');
+				background-size: cover;
+				background-position: center;
+				color: white;
+				padding: 100px 0;
+				text-align: center;
+				margin-bottom: 50px;
+			}
+
+			.influence-card {
+				border-radius: var(--border-radius);
+				padding: 20px;
+				margin-bottom: 20px;
+				background: white;
+				box-shadow: var(--box-shadow);
+			}
+
+			.influence-card h5 {
+				color: var(--secondary-color);
+				border-bottom: 2px solid var(--primary-color);
+				padding-bottom: 10px;
+				margin-bottom: 15px;
+			}
+            
+            /* 移除代表作品列表的播放图标和交互效果 */
+            .list-group-item {
+                cursor: default;
+            }
+            
+            .list-group-item:hover {
+                background-color: #f8f9fa;
+            }
+            
+            .list-group-item .iconfont {
+                color: #6c757d !important; /* 灰色，表示不可点击 */
+            }
+		</style>
+	</head>
+	<body>
+		<!-- 导航栏 -->
+		<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+			<div class="container">
+				<a class="navbar-brand" href="index.html">
+					<span class="iconfont me-2">&#xe99a;</span>R&B音乐世界
+				</a>
+
+				<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+					<span class="navbar-toggler-icon"></span>
+				</button>
+
+				<div class="collapse navbar-collapse" id="navbarNav">
+					<ul class="navbar-nav me-auto">
+						<li class="nav-item">
+							<a class="nav-link" href="index.html">首页</a>
+						</li>
+
+						<li class="nav-item dropdown">
+							<a class="nav-link dropdown-toggle active" href="#" id="singersDropdown" role="button"
+								data-bs-toggle="dropdown" aria-expanded="false">
+								歌手介绍
+							</a>
+							<ul class="dropdown-menu" aria-labelledby="singersDropdown">
+								<li><a class="dropdown-item" href="wanglihong.html">王力宏</a></li>
+								<li><a class="dropdown-item active" href="taozhe.html">陶喆</a></li>
+								<li><a class="dropdown-item" href="fangdatong.html">方大同</a></li>
+								<li>
+									<hr class="dropdown-divider">
+								</li>
+								<li><a class="dropdown-item" href="compare.html">三人对比</a></li>
+							</ul>
+						</li>
+
+						<li class="nav-item">
+							<a class="nav-link" href="classic_albums.html">经典专辑</a>
+						</li>
+
+						<li class="nav-item">
+							<a class="nav-link" href="song_stories.html">创作故事</a>
+						</li>
+
+						<li class="nav-item">
+							<a class="nav-link" href="about.html">关于我们</a>
+						</li>
+					</ul>
+
+					<div class="d-flex">
+						<a href="login.html" class="btn btn-outline-light me-2">
+							<span class="iconfont me-1">&#xe97e;</span>登录
+						</a>
+						<a href="register.html" class="btn btn-primary">
+							<span class="iconfont me-1">&#xe683;</span>注册
+						</a>
+					</div>
+				</div>
+			</div>
+		</nav>
+
+		<!-- 歌手介绍头部 -->
+		<header class="singer-hero">
+			<div class="container">
+				<h1 class="display-3 mb-3">陶喆</h1>
+				<p class="lead">华语R&B教父 · 音乐创作先锋 · 金曲奖得主</p>
+				<div class="mt-4">
+					<span class="badge bg-primary me-2">R&B</span>
+					<span class="badge bg-secondary me-2">灵魂乐</span>
+					<span class="badge bg-success me-2">摇滚</span>
+					<span class="badge bg-danger me-2">流行</span>
+				</div>
+			</div>
+		</header>
+
+		<!-- 主要内容 -->
+		<main class="container">
+			<div class="row">
+				<!-- 左侧栏：基本信息 -->
+				<div class="col-lg-4 mb-4">
+					<div class="card mb-4">
+						<img src="../img/singer/taozhe.jpg" class="card-img-top" alt="陶喆">
+						<div class="card-body">
+							<h4 class="card-title">基本信息</h4>
+							<table class="table table-borderless">
+								<tr>
+									<th width="40%">本名</th>
+									<td>陶喆</td>
+								</tr>
+								<tr>
+									<th>英文名</th>
+									<td>David Tao</td>
+								</tr>
+								<tr>
+									<th>出生</th>
+									<td>1969年7月11日</td>
+								</tr>
+								<tr>
+									<th>出生地</th>
+									<td>香港</td>
+								</tr>
+								<tr>
+									<th>国籍</th>
+									<td>美国</td>
+								</tr>
+								<tr>
+									<th>职业</th>
+									<td>歌手、词曲作家、音乐制作人</td>
+								</tr>
+								<tr>
+									<th>音乐类型</th>
+									<td>R&B、灵魂乐、摇滚、流行</td>
+								</tr>
+								<tr>
+									<th>称号</th>
+									<td>华语R&B教父</td>
+								</tr>
+							</table>
+						</div>
+					</div>
+
+					<div class="card mb-4">
+						<div class="card-body">
+							<h4 class="card-title mb-3">代表作品</h4>
+							<div class="list-group">
+								<div class="list-group-item">
+									<span class="iconfont me-2 text-muted">&#xe99a;</span>爱很简单
+								</div>
+								<div class="list-group-item">
+									<span class="iconfont me-2 text-muted">&#xe99a;</span>黑色柳丁
+								</div>
+								<div class="list-group-item">
+									<span class="iconfont me-2 text-muted">&#xe99a;</span>今天你要嫁给我
+								</div>
+								<div class="list-group-item">
+									<span class="iconfont me-2 text-muted">&#xe99a;</span>飞机场的10:30
+								</div>
+								<div class="list-group-item">
+									<span class="iconfont me-2 text-muted">&#xe99a;</span>就是爱你
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="card">
+						<div class="card-body">
+							<h4 class="card-title mb-3">荣誉奖项</h4>
+							<ul class="list-unstyled">
+								<li><span class="iconfont text-warning me-2">&#xe671;</span>金曲奖最佳新人奖</li>
+								<li><span class="iconfont text-warning me-2">&#xe671;</span>金曲奖最佳专辑制作人奖</li>
+								<li><span class="iconfont text-warning me-2">&#xe671;</span>中华音乐人交流协会年度十大专辑</li>
+								<li><span class="iconfont text-warning me-2">&#xe671;</span>全球华语榜中榜最佳创作歌手</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+
+				<!-- 右侧栏：详细介绍 -->
+				<div class="col-lg-8">
+					<div class="card mb-4">
+						<div class="card-body">
+							<h3 class="card-title mb-3">音乐生涯</h3>
+							<p>陶喆被誉为"华语R&B教父"，是首位将纯正美式R&B引入华语乐坛的音乐人，对华语流行音乐产生了深远影响。</p>
+
+							<h5 class="mt-4 mb-3">早年经历与音乐启蒙</h5>
+							<p>陶喆出生于香港，成长于台湾和美国。在美国期间，他深受黑人音乐影响，特别是R&B和灵魂乐。大学时期主修心理学和电影，但音乐始终是他的最爱。</p>
+
+							<h5 class="mt-4 mb-3">音乐风格与创新</h5>
+							<p>陶喆的音乐以纯正的R&B为基础，融合灵魂乐、摇滚和流行元素。他的首张专辑《David Tao》彻底改变了华语乐坛的格局，将西式R&B与中文歌词完美结合。</p>
+
+							<div class="alert alert-info mt-4">
+								<h5><span class="iconfont me-2">&#xe61b;</span>音乐贡献</h5>
+								<p class="mb-0">陶喆不仅是一位杰出的歌手，更是一位优秀的制作人，曾为张惠妹、陈奕迅、蔡依林等多位歌手创作和制作歌曲。</p>
+							</div>
+						</div>
+					</div>
+
+					<!-- 音乐影响力 -->
+					<div class="card mb-4">
+						<div class="card-body">
+							<h3 class="card-title mb-4">对华语乐坛的影响力</h3>
+
+							<div class="row">
+								<div class="col-md-6 mb-3">
+									<div class="influence-card">
+										<h5>R&B本土化先驱</h5>
+										<p>首次将纯正美式R&B与中文歌词结合，开创了华语R&B的新纪元。</p>
+									</div>
+								</div>
+
+								<div class="col-md-6 mb-3">
+									<div class="influence-card">
+										<h5>制作人典范</h5>
+										<p>树立了音乐制作人的专业标准，影响了新一代音乐制作人。</p>
+									</div>
+								</div>
+
+								<div class="col-md-6 mb-3">
+									<div class="influence-card">
+										<h5>创作理念革新</h5>
+										<p>强调"音乐性"和"原创性"，推动了华语乐坛创作理念的变革。</p>
+									</div>
+								</div>
+
+								<div class="col-md-6 mb-3">
+									<div class="influence-card">
+										<h5>社会议题关注</h5>
+										<p>在音乐中探讨社会问题，如《黑色柳丁》反映社会现实。</p>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<!-- 代表专辑 -->
+					<div class="card mb-4">
+						<div class="card-body">
+							<h3 class="card-title mb-4">代表专辑</h3>
+
+							<div class="row">
+								<div class="col-md-4 mb-3">
+									<div class="album-thumbnail text-center">
+										<img src="../img/stories/DavidTao.webp" alt="David Tao"
+											class="img-fluid rounded mb-2">
+										<h6>《David Tao》</h6>
+										<p class="text-muted small">1997年 · 出道专辑</p>
+										<p class="small">被誉为华语乐坛R&B的开山之作</p>
+									</div>
+								</div>
+
+								<div class="col-md-4 mb-3">
+									<div class="album-thumbnail text-center">
+										<img src="../img/stories/heiseliuding.jpg" alt="黑色柳丁"
+											class="img-fluid rounded mb-2">
+										<h6>《黑色柳丁》</h6>
+										<p class="text-muted small">2002年 · 巅峰之作</p>
+										<p class="small">音乐性与社会批判的完美结合</p>
+									</div>
+								</div>
+
+								<div class="col-md-4 mb-3">
+									<div class="album-thumbnail text-center">
+										<img src="../img/stories/taimeili.png" alt="太美丽"
+											class="img-fluid rounded mb-2">
+										<h6>《太美丽》</h6>
+										<p class="text-muted small">2006年 · 成熟期作品</p>
+										<p class="small">展现多元化音乐风格与深度情感</p>
+									</div>
+								</div>
+							</div>
+
+							<!-- 移除了查看所有专辑的按钮 -->
+						</div>
+					</div>
+
+					<!-- 音乐理念 -->
+					<div class="card">
+						<div class="card-body">
+							<h3 class="card-title mb-3">音乐理念</h3>
+
+							<div class="row">
+								<div class="col-md-6 mb-3">
+									<div class="d-flex">
+										<div class="flex-shrink-0">
+											<span class="iconfont fa-2x text-primary me-3">&#xe64f;</span>
+										</div>
+										<div>
+											<h5>音乐性至上</h5>
+											<p>陶喆坚持音乐本身的质量和艺术性，认为好的音乐应该超越语言和文化界限。</p>
+										</div>
+									</div>
+								</div>
+
+								<div class="col-md-6 mb-3">
+									<div class="d-flex">
+										<div class="flex-shrink-0">
+											<span class="iconfont fa-2x text-danger me-3">&#xe510;</span>
+										</div>
+										<div>
+											<h5>情感真诚</h5>
+											<p>他的音乐总是充满真挚的情感，无论是爱情、友情还是对社会现象的思考。</p>
+										</div>
+									</div>
+								</div>
+
+								<div class="col-md-6 mb-3">
+									<div class="d-flex">
+										<div class="flex-shrink-0">
+											<span class="iconfont fa-2x text-warning me-3">&#xe61b;</span>
+										</div>
+										<div>
+											<h5>不断创新</h5>
+											<p>从不满足于现状，不断探索新的音乐风格和表达方式。</p>
+										</div>
+									</div>
+								</div>
+
+								<div class="col-md-6 mb-3">
+									<div class="d-flex">
+										<div class="flex-shrink-0">
+											<span class="iconfont fa-2x text-success me-3">&#xe62d;</span>
+										</div>
+										<div>
+											<h5>影响后辈</h5>
+											<p>致力于培养新一代音乐人，分享自己的音乐经验和理念。</p>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</main>
+
+		<!-- 页脚 -->
+		<footer class="bg-dark text-white py-5 mt-5">
+			<div class="container">
+				<div class="row justify-content-center">
+					<div class="col-md-8 text-center mb-4">
+						<h4 class="mb-3"><span class="iconfont me-2">&#xe99a;</span>R&B音乐世界</h4>
+						<p>专注于华语R&B音乐的文化传播平台，分享王力宏、陶喆、方大同三位音乐人的作品与故事。</p>
+					</div>
+				</div>
+
+				<hr class="bg-light">
+
+				<div class="row">
+					<div class="col-12 text-center">
+						<p class="mb-0">&copy; 2025 R&B音乐世界. 版权所有.</p>
+					</div>
+				</div>
+			</div>
+		</footer>
+
+		<!-- Bootstrap 5 JavaScript Bundle with Popper -->
+		<script src="../js/bootstrap.bundle.min.js"></script>
+	</body>
+</html>

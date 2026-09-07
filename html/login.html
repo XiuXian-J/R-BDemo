@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>用户登录 - R&B音乐世界</title>
+    
+    <!-- Bootstrap 5 CSS -->
+    <link href="../css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- 本地字体图标库 -->
+    <link rel="stylesheet" href="../css/font.css">
+    
+    <!-- 自定义样式 -->
+    <link rel="stylesheet" href="../css/style.css">
+    
+    <!-- 网站图标 -->
+    <link rel="icon" href="../img/icons/favicon.ico" type="image/x-icon">
+	
+	<style>
+	    /* 在表单没有被触摸过时，隐藏验证样式 */
+	    .form-control:not(:focus):not(.was-validated) {
+	        border-color: #ced4da !important;
+	        background-image: none !important;
+	    }
+	    
+	    /* 隐藏默认的错误提示 */
+	    .invalid-feedback {
+	        display: none;
+	    }
+	    
+	    /* 只在需要时显示错误提示 */
+	    .is-invalid ~ .invalid-feedback {
+	        display: block;
+	    }
+	</style>
+</head>
+<body>
+    <!-- 导航栏开始 -->
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+            <div class="container">
+                <a class="navbar-brand" href="index.html">
+                    <span class="iconfont me-2">&#xe99a;</span>R&B音乐世界
+                </a>
+                
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav me-auto">
+                        <li class="nav-item">
+                            <a class="nav-link active" href="index.html">首页</a>
+                        </li>
+                        
+                        <!-- 歌手介绍下拉菜单 -->
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="singersDropdown" role="button" 
+                               data-bs-toggle="dropdown" aria-expanded="false">
+                                歌手介绍
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="singersDropdown">
+                                <li><a class="dropdown-item" href="wanglihong.html">王力宏</a></li>
+                                <li><a class="dropdown-item" href="taozhe.html">陶喆</a></li>
+                                <li><a class="dropdown-item" href="fangdatong.html">方大同</a></li>
+                                <li><hr class="dropdown-divider"></li>
+                                <li><a class="dropdown-item" href="compare.html">三人对比</a></li>
+                            </ul>
+                        </li>
+                        
+                        <!-- 专辑页面 -->
+                        <li class="nav-item">
+                            <a class="nav-link" href="classic_albums.html">经典专辑</a>
+                        </li>
+                        
+                        <li class="nav-item">
+                            <a class="nav-link" href="song_stories.html">创作故事</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="about.html">关于我们</a>
+                        </li>
+                    </ul>
+                    
+                    <!-- 用户操作区域 -->
+                    <div class="d-flex">
+                        <a href="login.html" class="btn btn-outline-light me-2">
+                            <span class="iconfont me-1">&#xe97e;</span>登录
+                        </a>
+                        <a href="register.html" class="btn btn-primary">
+                            <span class="iconfont me-1">&#xe683;</span>注册
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </nav>
+        <!-- 导航栏结束 -->
+
+    <!-- 登录表单区域 -->
+    <main class="container py-5">
+        <div class="row justify-content-center">
+            <div class="col-md-6 col-lg-5">
+                <div class="card login-card shadow">
+                    <div class="card-header bg-primary text-white text-center py-4">
+                        <h3><span class="iconfont me-2">&#xe97e;</span>用户登录</h3>
+                        <p class="mb-0">欢迎回到R&B音乐世界</p>
+                    </div>
+                    
+                    <div class="card-body p-4 p-md-5">
+                        <!-- 验证以下部分是否正确 -->
+                        <form id="loginForm" novalidate>
+                            <!-- 用户名/邮箱输入 -->
+                            <div class="mb-3">
+                                <label for="loginEmail" class="form-label">
+                                    <span class="iconfont me-1">&#xe704;</span>用户名或邮箱
+                                </label>
+                                <div class="input-group">
+                                    <span class="input-group-text">
+                                        <span class="iconfont">&#xe634;</span>
+                                    </span>
+                                    <input type="text" class="form-control" id="loginEmail" 
+                                           placeholder="请输入用户名或邮箱" required>
+                                    <div class="invalid-feedback">
+                                        请输入有效的用户名或邮箱
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- 密码输入 -->
+                            <div class="mb-3">
+                                <label for="loginPassword" class="form-label">
+                                    <span class="iconfont me-1">&#xf00c9;</span>密码
+                                </label>
+                                <div class="input-group">
+                                    <span class="input-group-text">
+                                        <span class="iconfont">&#xf00c9;</span>
+                                    </span>
+                                    <input type="password" class="form-control" id="loginPassword" 
+                                           placeholder="请输入密码" required>
+                                    <button class="btn btn-outline-secondary" type="button" id="togglePassword">
+                                        <span class="iconfont">&#xe8bf;</span>
+                                    </button>
+                                    <div class="invalid-feedback">
+                                        请输入密码
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- 记住我 -->
+                            <div class="mb-3 d-flex justify-content-between align-items-center">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="rememberMe">
+                                    <label class="form-check-label" for="rememberMe">记住我</label>
+                                </div>
+                                <a href="forgot-password.html" class="text-decoration-none">忘记密码？</a>
+                            </div>
+                            
+                            <!-- 提交按钮 -->
+                            <div class="d-grid mb-3">
+                                <button type="submit" class="btn btn-primary btn-lg">
+                                    <span class="iconfont me-2">&#xe97e;</span>登录
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                
+                <!-- 登录提示 -->
+                <div class="alert alert-info mt-4" role="alert">
+                    <h5><span class="iconfont me-2">&#xe61b;</span>温馨提示：</h5>
+                    <ul class="mb-0">
+                        <li>测试账号: <strong>test@rnb.com</strong> / 密码: <strong>123456</strong></li>
+                        <li>注册后可收藏喜爱的歌曲和专辑</li>
+                        <li>会员可享受无损音质试听</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- 页脚（与首页相同） -->
+    <footer class="bg-dark text-white py-4">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <p class="mb-0">&copy; 2025 R&B音乐世界. 版权所有.</p>
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <a href="index.html" class="text-white-50 me-3">返回首页</a>
+                    <a href="#" class="text-white-50" id="back-to-top"><span class="iconfont">&#xe61b;</span> 回到顶部</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+	<!-- Bootstrap 5 JavaScript Bundle with Popper -->
+	    <script src="../js/bootstrap.bundle.min.js"></script>
+    
+    <!-- 表单验证脚本 -->
+    <script src="../js/form_validation.js"></script>
+    
+    <!-- 页面脚本 -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('登录页面初始化开始');
+            
+            // 密码显示/隐藏切换
+            const togglePasswordBtn = document.getElementById('togglePassword');
+            if (togglePasswordBtn) {
+                togglePasswordBtn.addEventListener('click', function() {
+                    const passwordInput = document.getElementById('loginPassword');
+                    const icon = this.querySelector('.iconfont');
+                    
+                    if (passwordInput.type === 'password') {
+                        passwordInput.type = 'text';
+                        // 由于没有眼睛关闭图标，我们保留眼睛图标
+                        // icon.textContent = '\ue61b'; // 使用信息图标代替
+                    } else {
+                        passwordInput.type = 'password';
+                        // icon.textContent = '\ue8bf'; // 眼睛图标
+                    }
+                });
+            }
+            
+            // 表单验证模块会自动处理表单提交和验证
+            console.log('登录页面初始化完成');
+        });
+    </script>
+</body>
+</html>

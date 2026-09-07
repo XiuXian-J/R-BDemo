@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>经典专辑 - R&B音乐世界</title>
+    
+    <!-- Bootstrap 5 CSS -->
+    <link href="../css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- 本地字体图标库 -->
+    <link rel="stylesheet" href="../css/font.css">
+    
+    <!-- 自定义样式 -->
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/responsive.css">
+    
+    <!-- 网站图标 -->
+    <link rel="icon" href="../img/icons/favicon.ico" type="image/x-icon">
+    
+    <!-- 页面样式 -->
+    <style>
+        .album-filter {
+            margin-bottom: 30px;
+        }
+        
+        .album-card {
+            transition: transform 0.3s ease;
+            height: 100%;
+        }
+        
+        .album-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .album-cover {
+            height: 250px;
+            object-fit: cover;
+            width: 100%;
+        }
+        
+        .album-meta {
+            font-size: 0.9rem;
+            color: var(--text-light);
+        }
+        
+        .album-actions {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 15px;
+        }
+        
+        .album-year {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: rgba(0,0,0,0.7);
+            color: white;
+            padding: 3px 8px;
+            border-radius: 3px;
+            font-size: 0.8rem;
+        }
+        
+        .song-list {
+            display: none;
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 1px solid #dee2e6;
+        }
+        
+        .song-item {
+            display: flex;
+            align-items: center;
+            padding: 8px 0;
+            border-bottom: 1px solid #f0f0f0;
+        }
+        
+        .song-item:last-child {
+            border-bottom: none;
+        }
+        
+        .song-icon {
+            margin-right: 10px;
+            color: #6c757d;
+        }
+        
+        .song-title {
+            flex: 1;
+        }
+        
+        .toggle-songs {
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <!-- 导航栏 -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="../index.html">
+                <span class="iconfont me-2">&#xe99a;</span>R&B音乐世界
+            </a>
+            
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">首页</a>
+                    </li>
+                    
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="singersDropdown" role="button" 
+                           data-bs-toggle="dropdown" aria-expanded="false">
+                            歌手介绍
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="singersDropdown">
+                            <li><a class="dropdown-item" href="wanglihong.html">王力宏</a></li>
+                            <li><a class="dropdown-item" href="taozhe.html">陶喆</a></li>
+                            <li><a class="dropdown-item" href="fangdatong.html">方大同</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="compare.html">三人对比</a></li>
+                        </ul>
+                    </li>
+                    
+                    <li class="nav-item">
+                        <a class="nav-link active" href="classic_albums.html">经典专辑</a>
+                    </li>
+                    
+                    <li class="nav-item">
+                        <a class="nav-link" href="song_stories.html">创作故事</a></li>
+                    
+                    <li class="nav-item">
+                        <a class="nav-link" href="about.html">关于我们</a></li>
+                </ul>
+                
+                <div class="d-flex">
+                    <a href="login.html" class="btn btn-outline-light me-2">
+                        <span class="iconfont me-1">&#xe97e;</span>登录
+                    </a>
+                    <a href="register.html" class="btn btn-primary">
+                        <span class="iconfont me-1">&#xe683;</span>注册
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 页面头部 -->
+    <header class="bg-dark text-white py-5 mt-5">
+        <div class="container">
+            <h1 class="display-4">经典专辑收藏</h1>
+            <p class="lead">探索华语R&B三巨头的经典音乐作品</p>
+        </div>
+    </header>
+
+    <!-- 专辑筛选 -->
+    <div class="container mt-4">
+        <div class="album-filter">
+            <div class="row">
+                <div class="col-md-8">
+                    <div class="btn-group" role="group">
+                        <button type="button" class="btn btn-outline-primary active" data-filter="all">全部专辑</button>
+                        <button type="button" class="btn btn-outline-primary" data-filter="wanglihong">王力宏</button>
+                        <button type="button" class="btn btn-outline-primary" data-filter="taozhe">陶喆</button>
+                        <button type="button" class="btn btn-outline-primary" data-filter="fangdatong">方大同</button>
+                    </div>
+                </div>
+                
+                <div class="col-md-4">
+                    <div class="input-group">
+                        <input type="text" class="form-control" placeholder="搜索专辑..." id="albumSearch">
+                        <button class="btn btn-primary" type="button">
+                            <span class="iconfont">&#xe63e;</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 专辑展示 -->
+    <main class="container pb-5">
+        <!-- 王力宏专辑 -->
+        <section id="wanglihong-albums" class="mb-5">
+            <h3 class="mb-4 border-bottom pb-2">王力宏经典专辑</h3>
+            
+            <div class="row">
+                <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
+                    <div class="card album-card" data-singer="wanglihong">
+                        <div class="position-relative">
+                            <img src="../img/stories/weiyi.png" class="card-img-top album-cover" alt="唯一">
+                            <span class="album-year">2001</span>
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title">《唯一》</h5>
+                            <p class="card-text album-meta">王力宏的第四张专辑，奠定了他在华语乐坛的地位。</p>
+                            <div class="album-actions">
+                                <button class="btn btn-sm btn-outline-primary toggle-songs" data-album="weiyi">
+                                    <span class="iconfont me-1">&#xe61b;</span> 歌曲列表
+                                </button>
+                            </div>
+                            
+                            <!-- 歌曲列表 -->
+                            <div class="song-list" id="songs-weiyi">
+                                <div class="song-item">
+                                    <span class="song-icon iconfont">&#xe99a;</span>
+                                    <span class="song-title">唯一</span>
+                                </div>
+                                <div class="song-item">
+                                    <span class="song-icon iconfont">&#xe99a;</span>
+                                    <span class="song-title">爱的就是你</span>
+                                </div>
+                                <div class="song-item">
+                                    <span class="song-icon iconfont">&#xe99a;</span>
+                                    <span class="song-title">安全感</span>
+                                </div>
+                                <div class="song-item">
+                                    <span class="song-icon iconfont">&#xe99a;</span>
+                                    <span class="song-title">白狐狸</span>
+                                </div>
+                                <div class="song-item">
+                                    <span class="song-icon iconfont">&#xe99a;</span>
+                                    <span class="song-title">变坏</span>
+                                </div>
+                                <div class="song-item">
+                                    <span class="song-icon iconfont">&#xe99a;</span>
+                                    <span class="song-title">If You Knew</span>
+                                </div>
+                                <div class="song-item">
+                                    <span class="song-icon iconfont">&#xe99a;</span>
+                                    <span class="song-title">谢绝推销你的爱</span>
+                                </div>
+                                <div class="song-item">
+                                    <span class="song-icon iconfont">&#xe99a;</span>
+                                    <span class="song-title">戒不了你</span>
+                                </div>
+                                <div class="song-item">
+                                    <span class="song-icon iconfont">&#xe99a;</span>
+                                    <span class="song-title">不必问别人</span>
+                                </div>
+                                <div class="song-item">
+                                    <span class="song-icon iconfont">&#xe99a;</span>
+                                    <span class="song-title">这就是爱</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
+                    <div class="card album-card" data-singer="wanglihong">
+                        <div class="position-relative">
+                            <img src="../img/stories/xinzhongderiyue.webp" class="card-img-top album-cover" alt="心中的日月">
+                            <span class="album-year">2004</span>
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title">《心中的日月》</h5>
+                            <p class="card-text album-meta">开创"Chinked-out"风格，融合藏族音乐元素。</p>
+                            <div class="album-actions">
+                                <button class="btn btn-sm btn-outline-primary toggle-songs" data-album="xinzhongderiyue">
+                                    <span class="iconfont me-1">&#xe61b;</span> 歌曲列表
+                                </button>
+                            </div>
+                            
+                            <!-- 歌曲列表 -->
+                            <div class="song-list" id="songs-xinzhongderiyue">
+                                <div class="song-item">
+                                    <span class="song-icon iconfont">&#xe99a;</span>
+                                    <span class="song-title">心中的日月</span>
+                                </div>
+                                <div class="song-item">
+                                    <span class="song-icon iconfont">&#xe99a;</span>
+                                    <span class="song-title">放开你的心</span>
+                                </div>
+                                <div class="song-item">
+                                    <span class="song-icon iconfont">&#xe99a;</span>
+                                    <span class="song-title">竹林深处</span>
+                                </div>
+                                <div class="song-item">
+                                    <span class="song-icon iconfont">&#xe99a;</span>
+                                    <span class="song-title">Forever Love</span>
+                                </div>
+                                <div class="song-item">
+                                    <span class="song-icon iconfont">&#xe99a;</span>
+                                    <span class="song-title">在那遥远的地方</span>
+                                </div>
+                                <div class="song-item">
+                                    <span class="song-icon iconfont">&#xe99a;</span>
+                                    <span class="song-title">一首简单的歌</span>
+                                </div>
+                                <div class="song-item">
+                                    <span class="song-icon iconfont">&#xe99a;</span>
+                                    <span class="song-title">星座</span>
+                                </div>
+                                <div class="song-item">
+                                    <span class="song-icon iconfont">&#xe99a;</span>
+                                    <span class="song-title">过来</span>
+                                </div>
+                                <div class="song-item">
+                                    <span class="song-icon iconfont">&#xe99a;</span>
+                                    <span class="song-title">爱错</span>
+                                </div>
+                                <div class="song-item">
+                                    <span class="song-icon iconfont">&#xe99a;</span>
+                                    <span class="song-title">Follow Me</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 更多王力宏专辑... -->
+            </div>
+        </section>
+        
+        <!-- 陶喆专辑 -->
+        <section id="taozhe-albums" class="mb-5">
+            <h3 class="mb-4 border-bottom pb-2">陶喆经典专辑</h3>
+            
+            <div class="row">
+                <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
+                    <div class="card album-card" data-singer="taozhe">
+                        <div class="position-relative">
+                            <img src="../img/stories/DavidTao.webp" class="card-img-top album-cover" alt="David Tao">
+                            <span class="album-year">1997</span>
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title">《David Tao》</h5>
+                            <p class="card-text album-meta">陶喆的出道专辑，被誉为华语R&B的开山之作。</p>
+                            <div class="album-actions">
+                                <button class="btn btn-sm btn-outline-primary toggle-songs" data-album="davidtao">
+                                    <span class="iconfont me-1">&#xe61b;</span> 歌曲列表
+                                </button>
+                            </div>
+                            
+                            <!-- 歌曲列表 -->
+                            <div class="song-list" id="songs-davidtao">
+                                <div class="song-item">
+                                    <span class="song-icon iconfont">&#xe99a;</span>
+                                    <span class="song-title">飞机场的10:30</span>
+                                </div>
+                                <div class="song-item">
+                                    <span class="song-icon iconfont">&#xe99a;</span>
+                                    <span class="song-title">爱，很简单</span>
+                                </div>
+                                <div class="song-item">
+                                    <span class="song-icon iconfont">&#xe99a;</span>
+                                    <span class="song-title">沙滩</span>
+                                </div>
+                                <div class="song-item">
+                                    <span class="song-icon iconfont">&#xe99a;</span>
+                                    <span class="song-title">十七岁</span>
+                                </div>
+                                <div class="song-item">
+                                    <span class="song-icon iconfont">&#xe99a;</span>
+                                    <span class="song-title">望春风</span>
+                                </div>
+                                <div class="song-item">
+                                    <span class="song-icon iconfont">&#xe99a;</span>
+                                    <span class="song-title">是是非非</span>
+                                </div>
+                                <div class="song-item">
+                                    <span class="song-icon iconfont">&#xe99a;</span>
+                                    <span class="song-title">流沙</span>
+                                </div>
+                                <div class="song-item">
+                                    <span class="song-icon iconfont">&#xe99a;</span>
+                                    <span class="song-title">Take 6 Minus 3</span>
+                                </div>
+                                <div class="song-item">
+                                    <span class="song-icon iconfont">&#xe99a;</span>
+                                    <span class="song-title">心乱飞</span>
+                                </div>
+                                <div class="song-item">
+                                    <span class="song-icon iconfont">&#xe99a;</span>
+                                    <span class="song-title">再见以前先说再见</span>
+                                </div>
+                                <div class="song-item">
+                                    <span class="song-icon iconfont">&#xe99a;</span>
+                                    <span class="song-title">王八蛋</span>
+                                </div>
+                                <div class="song-item">
+                                    <span class="song-icon iconfont">&#xe99a;</span>
+                                    <span class="song-title">Answering Machine</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 更多陶喆专辑... -->
+            </div>
+        </section>
+        
+        <!-- 方大同专辑 -->
+        <section id="fangdatong-albums">
+            <h3 class="mb-4 border-bottom pb-2">方大同经典专辑</h3>
+            
+            <div class="row">
+                <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
+                    <div class="card album-card" data-singer="fangdatong">
+                        <div class="position-relative">
+                            <img src="../img/stories/soulboy.jpg" class="card-img-top album-cover" alt="Soulboy">
+                            <span class="album-year">2005</span>
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title">《Soulboy》</h5>
+                            <p class="card-text album-meta">方大同的出道专辑，纯正灵魂乐在华语乐坛的首秀。</p>
+                            <div class="album-actions">
+                                <button class="btn btn-sm btn-outline-primary toggle-songs" data-album="soulboy">
+                                    <span class="iconfont me-1">&#xe61b;</span> 歌曲列表
+                                </button>
+                            </div>
+                            
+                            <!-- 歌曲列表 -->
+                            <div class="song-list" id="songs-soulboy">
+                                <div class="song-item">
+                                    <span class="song-icon iconfont">&#xe99a;</span>
+                                    <span class="song-title">妹妹</span>
+                                </div>
+                                <div class="song-item">
+                                    <span class="song-icon iconfont">&#xe99a;</span>
+                                    <span class="song-title">春风吹</span>
+                                </div>
+                                <div class="song-item">
+                                    <span class="song-icon iconfont">&#xe99a;</span>
+                                    <span class="song-title">每天每天</span>
+                                </div>
+                                <div class="song-item">
+                                    <span class="song-icon iconfont">&#xe99a;</span>
+                                    <span class="song-title">女人</span>
+                                </div>
+                                <div class="song-item">
+                                    <span class="song-icon iconfont">&#xe99a;</span>
+                                    <span class="song-title">叫我怎么说</span>
+                                </div>
+                                <div class="song-item">
+                                    <span class="song-icon iconfont">&#xe99a;</span>
+                                    <span class="song-title">哪怕</span>
+                                </div>
+                                <div class="song-item">
+                                    <span class="song-icon iconfont">&#xe99a;</span>
+                                    <span class="song-title">南音</span>
+                                </div>
+                                <div class="song-item">
+                                    <span class="song-icon iconfont">&#xe99a;</span>
+                                    <span class="song-title">我们能不能</span>
+                                </div>
+                                <div class="song-item">
+                                    <span class="song-icon iconfont">&#xe99a;</span>
+                                    <span class="song-title">跳</span>
+                                </div>
+                                <div class="song-item">
+                                    <span class="song-icon iconfont">&#xe99a;</span>
+                                    <span class="song-title">总结</span>
+                                </div>
+                                <div class="song-item">
+                                    <span class="song-icon iconfont">&#xe99a;</span>
+                                    <span class="song-title">赶场</span>
+                                </div>
+                                <div class="song-item">
+                                    <span class="song-icon iconfont">&#xe99a;</span>
+                                    <span class="song-title">等着你回来</span>
+                                </div>
+                                <div class="song-item">
+                                    <span class="song-icon iconfont">&#xe99a;</span>
+                                    <span class="song-title">认识你 (Hidden Track)</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 更多方大同专辑... -->
+            </div>
+        </section>
+    </main>
+
+    <!-- 页脚 -->
+    <footer class="bg-dark text-white py-5 mt-5">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-md-8 text-center mb-4">
+                    <h4 class="mb-3"><span class="iconfont me-2">&#xe99a;</span>R&B音乐世界</h4>
+                    <p>专注于华语R&B音乐的文化传播平台，分享王力宏、陶喆、方大同三位音乐人的作品与故事。</p>
+                </div>
+            </div>
+            
+            <hr class="bg-light">
+            
+            <div class="row">
+                <div class="col-12 text-center">
+                    <p class="mb-0">&copy; 2025 R&B音乐世界. 版权所有.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+    
+    <!-- Bootstrap 5 JavaScript Bundle with Popper -->
+    <script src="../js/bootstrap.bundle.min.js"></script>
+    
+    <!-- 专辑页面脚本 -->
+    <script>
+        // 专辑筛选功能
+        document.querySelectorAll('.album-filter .btn').forEach(button => {
+            button.addEventListener('click', function() {
+                // 更新按钮状态
+                document.querySelectorAll('.album-filter .btn').forEach(btn => {
+                    btn.classList.remove('active');
+                });
+                this.classList.add('active');
+                
+                const filter = this.getAttribute('data-filter');
+                
+                // 显示/隐藏专辑
+                document.querySelectorAll('.album-card').forEach(card => {
+                    if (filter === 'all' || card.getAttribute('data-singer') === filter) {
+                        card.parentElement.style.display = 'block';
+                    } else {
+                        card.parentElement.style.display = 'none';
+                    }
+                });
+            });
+        });
+        
+        // 专辑搜索功能
+        document.getElementById('albumSearch').addEventListener('input', function() {
+            const searchTerm = this.value.toLowerCase();
+            
+            document.querySelectorAll('.album-card').forEach(card => {
+                const title = card.querySelector('.card-title').textContent.toLowerCase();
+                const text = card.querySelector('.card-text').textContent.toLowerCase();
+                
+                if (title.includes(searchTerm) || text.includes(searchTerm)) {
+                    card.parentElement.style.display = 'block';
+                } else {
+                    card.parentElement.style.display = 'none';
+                }
+            });
+        });
+        
+        // 歌曲列表切换功能 - 修改为只控制当前专辑的列表
+        document.querySelectorAll('.toggle-songs').forEach(button => {
+            button.addEventListener('click', function() {
+                const albumId = this.getAttribute('data-album');
+                const songList = document.getElementById('songs-' + albumId);
+                
+                // 只切换当前歌曲列表的显示状态，不影响其他列表
+                if (songList.style.display === 'none' || songList.style.display === '') {
+                    // 显示当前歌曲列表
+                    songList.style.display = 'block';
+                    
+                    // 更新按钮文本和图标
+                    this.innerHTML = '<span class="iconfont me-1">&#xe8bf;</span> 收起歌曲';
+                } else {
+                    // 隐藏当前歌曲列表
+                    songList.style.display = 'none';
+                    
+                    // 更新按钮文本和图标
+                    this.innerHTML = '<span class="iconfont me-1">&#xe61b;</span> 歌曲列表';
+                }
+            });
+        });
+    </script>
+</body>
+</html>

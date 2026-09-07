@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>R&B音乐世界 - 华语R&B三巨头</title>
+    
+    <!-- Bootstrap 5 CSS -->
+    <link href="../css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- 本地字体图标库 -->
+    <link rel="stylesheet" href="../css/font.css">
+    
+    <!-- 自定义样式 -->
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/responsive.css">
+    
+    <!-- 网站图标 -->
+    <link rel="icon" href="../img/icons/favicon.ico" type="image/x-icon">
+    
+    <style>
+        /* 自定义播放按钮样式 */
+        .song-table .play-btn {
+            background-color: var(--primary-color) !important;
+            color: white !important;
+            border: none !important;
+            width: 40px;
+            height: 40px;
+            border-radius: 50% !important;
+            display: flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+            padding: 0 !important;
+            transition: all 0.3s ease !important;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1) !important;
+        }
+        
+        .song-table .play-btn:hover {
+            transform: scale(1.1) !important;
+            box-shadow: 0 6px 8px rgba(0, 0, 0, 0.2) !important;
+            background-color: var(--secondary-color) !important;
+        }
+        
+        .song-table .play-btn .iconfont {
+            font-size: 18px !important;
+            line-height: 1 !important;
+        }
+        
+        .song-table tr:hover .play-btn {
+            background-color: var(--secondary-color) !important;
+        }
+        
+        /* 确保表格中的播放按钮样式不被覆盖 */
+        .song-table .btn-outline-primary.play-btn {
+            background-color: var(--primary-color) !important;
+            color: white !important;
+            border: none !important;
+        }
+        
+        /* 热门歌曲表格样式优化 */
+        .song-table {
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+        
+        .song-table thead {
+            background-color: var(--primary-color) !important;
+        }
+        
+        .song-table th {
+            border: none;
+            font-weight: 600;
+        }
+        
+        .song-table tbody tr {
+            transition: all 0.3s ease;
+        }
+        
+        .song-table tbody tr:hover {
+            background-color: rgba(52, 152, 219, 0.1) !important;
+        }
+        
+        .song-table td, .song-table th {
+            vertical-align: middle;
+            padding: 15px 12px;
+        }
+        
+        /* 调整播放次数列的宽度 */
+        .song-table th:nth-child(5), .song-table td:nth-child(5) {
+            text-align: center;
+        }
+        
+        /* 调整播放按钮列的宽度 */
+        .song-table th:nth-child(6), .song-table td:nth-child(6) {
+            text-align: center;
+            width: 80px;
+        }
+        
+        /* 响应式调整 */
+        @media (max-width: 768px) {
+            .song-table .play-btn {
+                width: 36px;
+                height: 36px;
+            }
+            
+            .song-table .play-btn .iconfont {
+                font-size: 16px !important;
+            }
+        }
+    </style>
+    
+</head>
+<body>
+    <!-- 导航栏开始 -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">
+                <span class="iconfont me-2">&#xe99a;</span>R&B音乐世界
+            </a>
+            
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="index.html">首页</a>
+                    </li>
+                    
+                    <!-- 歌手介绍下拉菜单 -->
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="singersDropdown" role="button" 
+                           data-bs-toggle="dropdown" aria-expanded="false">
+                            歌手介绍
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="singersDropdown">
+                            <li><a class="dropdown-item" href="wanglihong.html">王力宏</a></li>
+                            <li><a class="dropdown-item" href="taozhe.html">陶喆</a></li>
+                            <li><a class="dropdown-item" href="fangdatong.html">方大同</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="compare.html">三人对比</a></li>
+                        </ul>
+                    </li>
+                    
+                    <!-- 专辑页面 -->
+                    <li class="nav-item">
+                        <a class="nav-link" href="classic_albums.html">经典专辑</a>
+                    </li>
+                    
+                    <li class="nav-item">
+                        <a class="nav-link" href="song_stories.html">创作故事</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="about.html">关于我们</a>
+                    </li>
+                </ul>
+                
+                <!-- 用户操作区域 -->
+                <div class="d-flex">
+                    <a href="login.html" class="btn btn-outline-light me-2">
+                        <span class="iconfont me-1">&#xe97e;</span>登录
+                    </a>
+                    <a href="register.html" class="btn btn-primary">
+                        <span class="iconfont me-1">&#xe683;</span>注册
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <!-- 导航栏结束 -->
+
+    <!-- 轮播图开始 -->
+    <div id="heroCarousel" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-indicators">
+            <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="0" class="active"></button>
+            <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="1"></button>
+            <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="2"></button>
+        </div>
+        
+        <div class="carousel-inner">
+            <!-- 轮播图1: 王力宏 -->
+            <div class="carousel-item active">
+                <img src="../img/singer/wlh.jpg" class="d-block w-100" alt="王力宏">
+                <div class="carousel-caption d-none d-md-block">
+                    <h2>王力宏 - 音乐才子</h2>
+                    <p>华语乐坛R&B先锋，词曲创作全才</p>
+                    <a href="wanglihong.html" class="btn btn-primary btn-lg">了解更多</a>
+                </div>
+            </div>
+            
+            <!-- 轮播图2: 陶喆 -->
+            <div class="carousel-item">
+                <img src="../img/stories/tz.jpg" class="d-block w-100" alt="陶喆">
+                <div class="carousel-caption d-none d-md-block">
+                    <h2>陶喆 - R&B教父</h2>
+                    <p>将美式R&B引入华语乐坛的开拓者</p>
+                    <a href="taozhe.html" class="btn btn-primary btn-lg">了解更多</a>
+                </div>
+            </div>
+            
+            <!-- 轮播图3: 方大同 -->
+            <div class="carousel-item">
+                <img src="../img/stories/fdt.avif" class="d-block w-100" alt="方大同">
+                <div class="carousel-caption d-none d-md-block">
+                    <h2>方大同 - 灵魂歌手</h2>
+                    <p>将灵魂乐与R&B完美融合的音乐匠人</p>
+                    <a href="fangdatong.html" class="btn btn-primary btn-lg">了解更多</a>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 轮播控制按钮 -->
+        <button class="carousel-control-prev" type="button" data-bs-target="#heroCarousel" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">上一页</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#heroCarousel" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">下一页</span>
+        </button>
+    </div>
+    <!-- 轮播图结束 -->
+
+    <!-- 主要内容区域开始 -->
+    <main class="container mt-5">
+        <!-- 歌手介绍卡片区 -->
+        <section class="row mb-5">
+            <div class="col-12">
+                <h2 class="text-center mb-4 section-title">
+                    <span class="iconfont me-2">&#xe62d;</span>华语R&B三巨头
+                </h2>
+            </div>
+            
+            <!-- 王力宏卡片 -->
+            <div class="col-md-4 mb-4">
+                <div class="card singer-card h-100">
+                    <img src="../img/singer/wanglihong.png" class="card-img-top" alt="王力宏">
+                    <div class="card-body">
+                        <h3 class="card-title">王力宏</h3>
+                        <p class="card-text">美国籍华语流行歌手、词曲创作人、音乐制作人、演员、导演...</p>
+                        <div class="singer-info">
+                            <p><span class="iconfont me-2">&#xe671;</span>出生: 1976年5月17日</p>
+                            <p><span class="iconfont me-2">&#xe606;</span>出生地: 美国纽约州罗切斯特市</p>
+                            <p><span class="iconfont me-2">&#xe671;</span>代表作品: 《唯一》、《你不知道的事》、《心中的日月》</p>
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <a href="wanglihong.html" class="btn btn-outline-primary w-100">详细资料</a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 陶喆卡片 -->
+            <div class="col-md-4 mb-4">
+                <div class="card singer-card h-100">
+                    <img src="../img/singer/taozhe.jpg" class="card-img-top" alt="陶喆">
+                    <div class="card-body">
+                        <h3 class="card-title">陶喆</h3>
+                        <p class="card-text">华语流行乐男歌手、音乐制作人，被誉为"华语R&B教父"...</p>
+                        <div class="singer-info">
+                            <p><span class="iconfont me-2">&#xe671;</span>出生: 1969年7月11日</p>
+                            <p><span class="iconfont me-2">&#xe606;</span>出生地: 香港</p>
+                            <p><span class="iconfont me-2">&#xe671;</span>代表作品: 《爱很简单》、《黑色柳丁》、《今天你要嫁给我》</p>
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <a href="taozhe.html" class="btn btn-outline-primary w-100">详细资料</a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 方大同卡片 -->
+            <div class="col-md-4 mb-4">
+                <div class="card singer-card h-100">
+                    <img src="../img/singer/fangdatong.webp" class="card-img-top" alt="方大同">
+                    <div class="card-body">
+                        <h3 class="card-title">方大同</h3>
+                        <p class="card-text">华语流行乐男歌手、词曲创作人、音乐制作人...</p>
+                        <div class="singer-info">
+                            <p><span class="iconfont me-2">&#xe671;</span>出生: 1983年7月14日</p>
+                            <p><span class="iconfont me-2">&#xe606;</span>出生地: 美国夏威夷州</p>
+                            <p><span class="iconfont me-2">&#xe671;</span>代表作品: 《三人游》、《爱爱爱》、《好不容易》</p>
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <a href="fangdatong.html" class="btn btn-outline-primary w-100">详细资料</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 热门歌曲排行 -->
+        <section class="row mb-5">
+            <div class="col-12">
+                <h2 class="text-center mb-4 section-title">
+                    <span class="iconfont me-2">&#xe68d;</span>热门歌曲排行榜
+                </h2>
+            </div>
+            
+            <div class="col-lg-8 mx-auto">
+                <div class="table-responsive">
+                    <table class="table table-hover song-table">
+                        <thead class="table-dark">
+                            <tr>
+                                <th scope="col">排名</th>
+                                <th scope="col">歌曲名称</th>
+                                <th scope="col">歌手</th>
+                                <th scope="col">专辑</th>
+                                <th scope="col">播放次数</th>
+                                <th scope="col">播放</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <th scope="row">1</th>
+                                <td>唯一</td>
+                                <td>王力宏</td>
+                                <td>《唯一》</td>
+                                <td>1,250万</td>
+                                <td><button class="btn btn-primary play-btn" data-song-index="0"><span class="iconfont">&#xe543;</span></button></td>
+                            </tr>
+                            <tr>
+                                <th scope="row">2</th>
+                                <td>爱很简单</td>
+                                <td>陶喆</td>
+                                <td>《David Tao》</td>
+                                <td>1,180万</td>
+                                <td><button class="btn btn-primary play-btn" data-song-index="1"><span class="iconfont">&#xe543;</span></button></td>
+                            </tr>
+                            <tr>
+                                <th scope="row">3</th>
+                                <td>三人游</td>
+                                <td>方大同</td>
+                                <td>《橙月》</td>
+                                <td>980万</td>
+                                <td><button class="btn btn-primary play-btn" data-song-index="2"><span class="iconfont">&#xe543;</span></button></td>
+                            </tr>
+                            <tr>
+                                <th scope="row">4</th>
+                                <td>你不知道的事</td>
+                                <td>王力宏</td>
+                                <td>《十八般武艺》</td>
+                                <td>950万</td>
+                                <td><button class="btn btn-primary play-btn" data-song-index="3"><span class="iconfont">&#xe543;</span></button></td>
+                            </tr>
+                            <tr>
+                                <th scope="row">5</th>
+                                <td>黑色柳丁</td>
+                                <td>陶喆</td>
+                                <td>《黑色柳丁》</td>
+                                <td>920万</td>
+                                <td><button class="btn btn-primary play-btn" data-song-index="4"><span class="iconfont">&#xe543;</span></button></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <!-- 最新动态 -->
+        <section class="row mb-5">
+            <div class="col-12">
+                <h2 class="text-center mb-4 section-title">
+                    <span class="iconfont me-2">&#xe61b;</span>最新动态
+                </h2>
+            </div>
+            
+            <div class="col-md-6 mb-4">
+                <div class="card news-card">
+                    <div class="row g-0">
+                        <div class="col-md-4">
+                            <img src="../img/stories/shibabanwuyi.jpg" class="img-fluid rounded-start" alt="新闻图片">
+                        </div>
+                        <div class="col-md-8">
+                            <div class="card-body">
+                                <h5 class="card-title">王力宏宣布新专辑制作中</h5>
+                                <p class="card-text">王力宏近日在社交媒体透露，正在筹备全新专辑，预计明年春季发布...</p>
+                                <p class="card-text"><small class="text-muted">发布于 2023年11月15日</small></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-md-6 mb-4">
+                <div class="card news-card">
+                    <div class="row g-0">
+                        <div class="col-md-4">
+                            <img src="../img/stories/sanrenyou.png" class="img-fluid rounded-start" alt="新闻图片">
+                        </div>
+                        <div class="col-md-8">
+                            <div class="card-body">
+                                <h5 class="card-title">方大同获最佳R&B歌手奖</h5>
+                                <p class="card-text">在最近举行的音乐颁奖典礼上，方大同凭借最新单曲荣获最佳R&B歌手奖...</p>
+                                <p class="card-text"><small class="text-muted">发布于 2023年11月10日</small></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    <!-- 主要内容区域结束 -->
+
+    <!-- 页脚 -->
+        <footer class="bg-dark text-white py-5 mt-5">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-md-8 text-center mb-4">
+                        <h4 class="mb-3"><span class="iconfont me-2">&#xe99a;</span>R&B音乐世界</h4>
+                        <p>专注于华语R&B音乐的文化传播平台，分享王力宏、陶喆、方大同三位音乐人的作品与故事。</p>
+                    </div>
+                </div>
+                
+                <hr class="bg-light">
+                
+                <div class="row">
+                    <div class="col-12 text-center">
+                        <p class="mb-0">&copy; 2025 R&B音乐世界. 版权所有.</p>
+                    </div>
+                </div>
+            </div>
+        </footer>
+
+    <!-- Bootstrap 5 JavaScript Bundle with Popper -->
+        <script src="../js/bootstrap.bundle.min.js"></script>
+    
+    <!-- 自定义JavaScript -->
+    <script src="../js/main.js"></script>
+    
+    <!-- 音乐播放器脚本 -->
+    <script src="../js/music_player.js"></script>
+    
+    <!-- 音乐播放器容器 -->
+    <div id="music-player-container">
+        <!-- 迷你播放器 (点击展开) -->
+        <div id="mini-player" class="mini-player">
+            <div class="mini-player-content">
+                <div class="now-playing">
+                    <span class="iconfont">&#xe99a;</span>
+                    <span id="mini-song-title">点击播放音乐</span>
+                </div>
+                <button id="toggle-player-btn" class="btn btn-sm btn-outline-light">
+                    <span class="iconfont">&#xe61b;</span>
+                </button>
+            </div>
+        </div>
+        
+        <!-- 完整播放器 (默认隐藏) -->
+        <div id="full-player" class="full-player">
+            <div class="player-header">
+                <h5><span class="iconfont me-2">&#xe99a;</span>音乐播放器</h5>
+                <button id="close-player-btn" class="btn btn-sm btn-outline-light">
+                    <span class="iconfont">&#xe61b;</span>
+                </button>
+            </div>
+            
+            <div class="player-body">
+                <!-- 歌曲信息 -->
+                <div class="song-info">
+                    <div class="album-art">
+                        <img id="current-album-art" src="../images/albums/default-album.jpg" alt="专辑封面">
+                    </div>
+                    <div class="song-details">
+                        <h4 id="current-song-title">暂无播放</h4>
+                        <p id="current-singer">请选择歌曲</p>
+                        <div class="song-progress">
+                            <span id="current-time">0:00</span>
+                            <input type="range" id="progress-bar" min="0" max="100" value="0">
+                            <span id="duration">0:00</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 播放控制 -->
+                <div class="player-controls">
+                    <button id="prev-btn" class="control-btn">
+                        上一首
+                    </button>
+                    <button id="play-pause-btn" class="control-btn play-pause-btn">
+                        <span class="iconfont">&#xe543;</span>
+                    </button>
+                    <button id="next-btn" class="control-btn">
+                        下一首
+                    </button>
+                    
+                    <div class="volume-control">
+                        <button id="mute-btn" class="volume-btn">
+                            音量
+                        </button>
+                        <input type="range" id="volume-bar" min="0" max="100" value="80">
+                    </div>
+                    
+                    <button id="playlist-toggle-btn" class="control-btn">
+                        列表
+                    </button>
+                </div>
+                
+                <!-- 播放列表 -->
+                <div id="playlist-container" class="playlist-container">
+                    <div class="playlist-header">
+                        <h6>播放列表</h6>
+                        <span id="playlist-count">0 首歌曲</span>
+                    </div>
+                    <div class="playlist-content">
+                        <ul id="playlist">
+                            <!-- 播放列表将通过JavaScript动态添加 -->
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- 音频元素 -->
+    <audio id="audio-player" preload="metadata"></audio>
+    
+    <script>
+        // 为播放按钮添加点击事件 - 连接到音乐播放器
+        document.addEventListener('DOMContentLoaded', function() {
+            // 等待音乐播放器初始化完成
+            setTimeout(function() {
+                // 为播放按钮添加点击事件
+                document.querySelectorAll('.play-btn').forEach(button => {
+                    button.addEventListener('click', function(e) {
+                        e.stopPropagation();
+                        const songIndex = this.getAttribute('data-song-index');
+                        if (songIndex !== null) {
+                            // 如果音乐播放器已初始化，则播放歌曲
+                            if (window.MusicPlayer && typeof window.MusicPlayer.playSong === 'function') {
+                                window.MusicPlayer.playSong(parseInt(songIndex));
+                            } else {
+                                // 否则静默处理，不显示弹窗
+                                console.log('音乐播放器未初始化');
+                            }
+                        }
+                        
+                        // 添加视觉反馈
+                        this.style.transform = 'scale(0.95)';
+                        setTimeout(() => {
+                            this.style.transform = '';
+                        }, 150);
+                    });
+                });
+                
+                // 添加表格行点击效果
+                document.querySelectorAll('.song-table tbody tr').forEach(row => {
+                    row.addEventListener('click', function(e) {
+                        // 如果不是点击了播放按钮
+                        if (!e.target.closest('.play-btn')) {
+                            this.style.backgroundColor = '#f8f9fa';
+                            setTimeout(() => {
+                                this.style.backgroundColor = '';
+                            }, 200);
+                        }
+                    });
+                });
+            }, 1000); // 等待1秒确保音乐播放器已初始化
+        });
+    </script>
+</body>
+</html>

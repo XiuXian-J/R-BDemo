@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>王力宏 - R&B音乐世界</title>
+
+		<!-- Bootstrap 5 CSS -->
+		<link href="../css/bootstrap.min.css" rel="stylesheet">
+
+		<!-- 本地字体图标库 -->
+		<link rel="stylesheet" href="../css/font.css">
+
+		<!-- 自定义样式 -->
+		<link rel="stylesheet" href="../css/style.css">
+		<link rel="stylesheet" href="../css/responsive.css">
+
+		<!-- 网站图标 -->
+		<link rel="icon" href="../img/icons/favicon.ico" type="image/x-icon">
+
+		<style>
+			.singer-hero {
+				background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('../img/singer/wlh.jpg');
+				background-size: cover;
+				background-position: center;
+				color: white;
+				padding: 100px 0;
+				text-align: center;
+				margin-bottom: 50px;
+			}
+
+			.timeline {
+				position: relative;
+				padding: 20px 0;
+			}
+
+			.timeline::before {
+				content: '';
+				position: absolute;
+				left: 50%;
+				top: 0;
+				bottom: 0;
+				width: 4px;
+				background: var(--primary-color);
+				transform: translateX(-50%);
+			}
+
+			.timeline-item {
+				margin-bottom: 40px;
+				position: relative;
+			}
+
+			.timeline-content {
+				background: white;
+				padding: 20px;
+				border-radius: var(--border-radius);
+				box-shadow: var(--box-shadow);
+				position: relative;
+				width: 45%;
+			}
+
+			.timeline-item:nth-child(odd) .timeline-content {
+				margin-left: auto;
+			}
+
+			.timeline-item:nth-child(even) .timeline-content {
+				margin-right: auto;
+			}
+
+			.achievement-card {
+				border-left: 4px solid var(--primary-color);
+				padding-left: 15px;
+				margin-bottom: 15px;
+			}
+
+			@media (max-width: 768px) {
+				.timeline::before {
+					left: 20px;
+				}
+
+				.timeline-content {
+					width: calc(100% - 60px);
+					margin-left: 60px !important;
+					margin-right: 0 !important;
+				}
+			}
+
+			/* 移除代表作品列表的播放图标和交互效果 */
+			.list-group-item {
+				cursor: default;
+			}
+
+			.list-group-item:hover {
+				background-color: #f8f9fa;
+			}
+
+			.list-group-item .iconfont {
+				color: #6c757d !important;
+				/* 灰色，表示不可点击 */
+			}
+		</style>
+	</head>
+	<body>
+		<!-- 导航栏 -->
+		<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+			<div class="container">
+				<a class="navbar-brand" href="index.html">
+					<span class="iconfont me-2">&#xe99a;</span>R&B音乐世界
+				</a>
+
+				<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+					<span class="navbar-toggler-icon"></span>
+				</button>
+
+				<div class="collapse navbar-collapse" id="navbarNav">
+					<ul class="navbar-nav me-auto">
+						<li class="nav-item">
+							<a class="nav-link" href="index.html">首页</a>
+						</li>
+
+						<li class="nav-item dropdown">
+							<a class="nav-link dropdown-toggle active" href="#" id="singersDropdown" role="button"
+								data-bs-toggle="dropdown" aria-expanded="false">
+								歌手介绍
+							</a>
+							<ul class="dropdown-menu" aria-labelledby="singersDropdown">
+								<li><a class="dropdown-item active" href="wanglihong.html">王力宏</a></li>
+								<li><a class="dropdown-item" href="taozhe.html">陶喆</a></li>
+								<li><a class="dropdown-item" href="fangdatong.html">方大同</a></li>
+								<li>
+									<hr class="dropdown-divider">
+								</li>
+								<li><a class="dropdown-item" href="compare.html">三人对比</a></li>
+							</ul>
+						</li>
+
+						<li class="nav-item">
+							<a class="nav-link" href="classic_albums.html">经典专辑</a>
+						</li>
+
+						<li class="nav-item">
+							<a class="nav-link" href="song_stories.html">创作故事</a>
+						</li>
+
+						<li class="nav-item">
+							<a class="nav-link" href="about.html">关于我们</a>
+						</li>
+					</ul>
+
+					<div class="d-flex">
+						<a href="login.html" class="btn btn-outline-light me-2">
+							<span class="iconfont me-1">&#xe97e;</span>登录
+						</a>
+						<a href="register.html" class="btn btn-primary">
+							<span class="iconfont me-1">&#xe683;</span>注册
+						</a>
+					</div>
+				</div>
+			</div>
+		</nav>
+
+		<!-- 歌手介绍头部 -->
+		<header class="singer-hero">
+			<div class="container">
+				<h1 class="display-3 mb-3">王力宏</h1>
+				<p class="lead">华语流行音乐天王 · 音乐创作全才 · R&B先锋</p>
+				<div class="mt-4">
+					<span class="badge bg-primary me-2">R&B</span>
+					<span class="badge bg-secondary me-2">流行</span>
+					<span class="badge bg-success me-2">嘻哈</span>
+					<span class="badge bg-danger me-2">中国风</span>
+				</div>
+			</div>
+		</header>
+
+		<!-- 主要内容 -->
+		<main class="container">
+			<div class="row">
+				<!-- 左侧栏：基本信息 -->
+				<div class="col-lg-4 mb-4">
+					<div class="card mb-4">
+						<img src="../img/singer/wanglihong.png" class="card-img-top" alt="王力宏">
+						<div class="card-body">
+							<h4 class="card-title">基本信息</h4>
+							<table class="table table-borderless">
+								<tr>
+									<th width="40%">本名</th>
+									<td>王力宏</td>
+								</tr>
+								<tr>
+									<th>英文名</th>
+									<td>Leehom Wang</td>
+								</tr>
+								<tr>
+									<th>出生</th>
+									<td>1976年5月17日</td>
+								</tr>
+								<tr>
+									<th>出生地</th>
+									<td>美国纽约州罗切斯特市</td>
+								</tr>
+								<tr>
+									<th>国籍</th>
+									<td>美国</td>
+								</tr>
+								<tr>
+									<th>职业</th>
+									<td>歌手、词曲作家、音乐制作人、演员</td>
+								</tr>
+								<tr>
+									<th>音乐类型</th>
+									<td>R&B、流行、嘻哈、中国风</td>
+								</tr>
+							</table>
+						</div>
+					</div>
+
+					<div class="card">
+						<div class="card-body">
+							<h4 class="card-title mb-3">代表作品</h4>
+							<div class="list-group">
+								<div class="list-group-item">
+									<span class="iconfont me-2 text-muted">&#xe99a;</span>唯一
+								</div>
+								<div class="list-group-item">
+									<span class="iconfont me-2 text-muted">&#xe99a;</span>你不知道的事
+								</div>
+								<div class="list-group-item">
+									<span class="iconfont me-2 text-muted">&#xe99a;</span>心中的日月
+								</div>
+								<div class="list-group-item">
+									<span class="iconfont me-2 text-muted">&#xe99a;</span>改变自己
+								</div>
+								<div class="list-group-item">
+									<span class="iconfont me-2 text-muted">&#xe99a;</span>爱的就是你
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<!-- 右侧栏：详细介绍 -->
+				<div class="col-lg-8">
+					<div class="card mb-4">
+						<div class="card-body">
+							<h3 class="card-title mb-3">音乐生涯</h3>
+							<p>王力宏是华语乐坛最具影响力的音乐人之一，以其卓越的音乐才华、创新的音乐风格和跨越东西方的音乐视野而闻名。</p>
+
+							<h5 class="mt-4 mb-3">早年经历</h5>
+							<p>王力宏出生于美国纽约州罗切斯特市，成长于一个学术氛围浓厚的家庭。他从小学习小提琴和钢琴，展现出非凡的音乐天赋。1995年，他在台湾发行首张专辑《情敌贝多芬》，正式出道。</p>
+
+							<h5 class="mt-4 mb-3">音乐风格与创新</h5>
+							<p>王力宏的音乐融合了西方R&B、嘻哈与中国传统音乐元素，开创了"Chinked-out"（华人嘻哈）风格。他将二胡、京剧等中国传统元素与现代流行音乐结合，创造出独具特色的音乐风格。
+							</p>
+						</div>
+					</div>
+
+					<!-- 音乐成就 -->
+					<div class="card mb-4">
+						<div class="card-body">
+							<h3 class="card-title mb-4">主要成就</h3>
+
+							<div class="row">
+								<div class="col-md-6 mb-3">
+									<div class="achievement-card">
+										<h6><span class="iconfont me-2 text-warning">&#xe671;</span>金曲奖</h6>
+										<p class="mb-0">第15届金曲奖最佳专辑制作人奖</p>
+									</div>
+								</div>
+								<div class="col-md-6 mb-3">
+									<div class="achievement-card">
+										<h6><span class="iconfont me-2 text-warning">&#xe671;</span>全球华语榜中榜</h6>
+										<p class="mb-0">最佳男歌手、最佳创作歌手等多项大奖</p>
+									</div>
+								</div>
+								<div class="col-md-6 mb-3">
+									<div class="achievement-card">
+										<h6><span class="iconfont me-2 text-warning">&#xe671;</span>音乐风云榜</h6>
+										<p class="mb-0">最佳男歌手、最佳专辑等荣誉</p>
+									</div>
+								</div>
+								<div class="col-md-6 mb-3">
+									<div class="achievement-card">
+										<h6><span class="iconfont me-2 text-warning">&#xe671;</span>国际认可</h6>
+										<p class="mb-0">北京奥运会、伦敦奥运会火炬手</p>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<!-- 音乐生涯时间线 -->
+					<div class="card mb-4">
+						<div class="card-body">
+							<h3 class="card-title mb-4">音乐生涯时间线</h3>
+
+							<div class="timeline">
+								<div class="timeline-item">
+									<div class="timeline-content">
+										<h5>1995年</h5>
+										<p>发行首张专辑《情敌贝多芬》，正式出道</p>
+									</div>
+								</div>
+
+								<div class="timeline-item">
+									<div class="timeline-content">
+										<h5>1998年</h5>
+										<p>专辑《公转自转》获得第10届金曲奖最佳男演唱人奖</p>
+									</div>
+								</div>
+
+								<div class="timeline-item">
+									<div class="timeline-content">
+										<h5>2004年</h5>
+										<p>发行专辑《心中的日月》，开创"Chinked-out"风格</p>
+									</div>
+								</div>
+
+								<div class="timeline-item">
+									<div class="timeline-content">
+										<h5>2008年</h5>
+										<p>担任北京奥运会火炬手，创作奥运歌曲</p>
+									</div>
+								</div>
+
+								<div class="timeline-item">
+									<div class="timeline-content">
+										<h5>2010年</h5>
+										<p>自导自演电影《恋爱通告》，展现多栖才华</p>
+									</div>
+								</div>
+
+								<div class="timeline-item">
+									<div class="timeline-content">
+										<h5>2015年</h5>
+										<p>发行专辑《你的爱。》，探索EDM音乐风格</p>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<!-- 音乐作品精选 -->
+					<div class="card">
+						<div class="card-body">
+							<h3 class="card-title mb-4">精选专辑</h3>
+
+							<div class="row">
+								<div class="col-md-4 mb-3">
+									<div class="album-thumbnail">
+										<img src="../img/stories/weiyi.png" alt="唯一" class="img-fluid rounded mb-2">
+										<h6 class="text-center">《唯一》</h6>
+										<p class="text-center text-muted small">2001年</p>
+									</div>
+								</div>
+
+								<div class="col-md-4 mb-3">
+									<div class="album-thumbnail">
+										<img src="../img/stories/xinzhongderiyue.webp" alt="心中的日月"
+											class="img-fluid rounded mb-2">
+										<h6 class="text-center">《心中的日月》</h6>
+										<p class="text-center text-muted small">2004年</p>
+									</div>
+								</div>
+
+								<div class="col-md-4 mb-3">
+									<div class="album-thumbnail">
+										<img src="../img/stories/shibabanwuyi.jpg" alt="十八般武艺"
+											class="img-fluid rounded mb-2">
+										<h6 class="text-center">《十八般武艺》</h6>
+										<p class="text-center text-muted small">2010年</p>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</main>
+
+		<!-- 页脚 -->
+		<footer class="bg-dark text-white py-5 mt-5">
+			<div class="container">
+				<div class="row justify-content-center">
+					<div class="col-md-8 text-center mb-4">
+						<h4 class="mb-3"><span class="iconfont me-2">&#xe99a;</span>R&B音乐世界</h4>
+						<p>专注于华语R&B音乐的文化传播平台，分享王力宏、陶喆、方大同三位音乐人的作品与故事。</p>
+					</div>
+				</div>
+
+				<hr class="bg-light">
+
+				<div class="row">
+					<div class="col-12 text-center">
+						<p class="mb-0">&copy; 2025 R&B音乐世界. 版权所有.</p>
+					</div>
+				</div>
+			</div>
+		</footer>
+
+		<!-- Bootstrap 5 JavaScript Bundle with Popper -->
+		<script src="../js/bootstrap.bundle.min.js"></script>
+	</body>
+</html>
