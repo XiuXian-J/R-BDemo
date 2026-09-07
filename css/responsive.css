@@ -1,0 +1,80 @@
+/* 
+ * R&B音乐网站 - 响应式样式文件
+ * 文件名: responsive.css
+ * 作用: 针对不同设备的样式调整
+ */
+
+/* 超小设备 (手机, 小于576px) */
+@media (max-width: 575.98px) {
+    .navbar-brand {
+        font-size: 1.2rem;
+    }
+    
+    .section-title {
+        font-size: 1.4rem;
+    }
+    
+    .singer-card .card-body {
+        padding: 15px;
+    }
+    
+    .song-table {
+        font-size: 0.85rem;
+    }
+    
+    footer .row > div {
+        margin-bottom: 20px;
+    }
+}
+
+/* 小设备 (平板, 576px - 767.98px) */
+@media (min-width: 576px) and (max-width: 767.98px) {
+    .carousel-caption h2 {
+        font-size: 2rem;
+    }
+    
+    .singer-card .card-img-top {
+        height: 200px;
+    }
+}
+
+/* 中设备 (桌面, 768px - 991.98px) */
+@media (min-width: 768px) and (max-width: 991.98px) {
+    .carousel-item {
+        height: 400px;
+    }
+    
+    .carousel-caption h2 {
+        font-size: 2.2rem;
+    }
+}
+
+/* 大设备 (大桌面, 992px - 1199.98px) */
+@media (min-width: 992px) and (max-width: 1199.98px) {
+    .container {
+        max-width: 960px;
+    }
+}
+
+/* 超大设备 (超大桌面, 1200px以上) */
+@media (min-width: 1200px) {
+    .container {
+        max-width: 1140px;
+    }
+}
+
+/* 打印样式 */
+@media print {
+    .navbar, .carousel, footer, .btn {
+        display: none !important;
+    }
+    
+    body {
+        padding-top: 0;
+    }
+    
+    .card {
+        box-shadow: none;
+        border: 1px solid #ddd;
+    }
+}
